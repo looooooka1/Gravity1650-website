@@ -1,0 +1,82 @@
+<!--META
+{
+  "title": "Contact et réservation",
+  "description": "Contactez le Gravity 1650 à Chamrousse : téléphone 06 74 08 71 67, formulaire de contact, Instagram. Réservation pour le soir, fondue et raclette. Réponse sous 24 h en saison.",
+  "path": "/contact.html",
+  "priority": "0.8",
+  "changefreq": "monthly",
+  "breadcrumbs": [["Accueil", "/"], ["Contact", "/contact.html"]],
+  "extra_schema": "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ContactPage\",\"url\":\"https://www.gravity1650.fr/contact.html\",\"name\":\"Contact et réservation\",\"about\":{\"@id\":\"https://www.gravity1650.fr/#restaurant\"}}</script>"
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumb}}
+    <p class="eyebrow reveal">Contact</p>
+    <h1 class="reveal-lines"><span class="line"><span>Une question,</span></span><span class="line"><span>une réservation ?</span></span></h1>
+    <p class="lead reveal reveal-d1">Le plus rapide reste le téléphone pendant les heures d'ouverture. Sinon, laissez un message ici : on répond sous 24 h en saison.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap contact-grid">
+    <div>
+      <form class="form reveal" data-contact-form name="contact" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="site-web" novalidate>
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp" aria-hidden="true"><label>Ne pas remplir ce champ <input type="text" name="site-web" tabindex="-1" autocomplete="off"></label></p>
+        <div class="field">
+          <label for="nom">Votre nom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="contact">E-mail ou téléphone</label>
+          <input id="contact" name="contact" type="text" autocomplete="email" required aria-describedby="contact-hint">
+          <p class="hint" id="contact-hint">Pour vous répondre. Rien d'autre.</p>
+        </div>
+        <div class="field">
+          <label for="objet">Objet</label>
+          <select id="objet" name="objet">
+            <option value="reservation">Réservation (soir, fondue, raclette)</option>
+            <option value="groupe">Groupe ou événement</option>
+            <option value="question">Question</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" required aria-describedby="message-hint"></textarea>
+          <p class="hint" id="message-hint">Date, nombre de personnes, heure souhaitée : tout ce qui nous aide à répondre vite.</p>
+        </div>
+        <div class="field">
+          <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500">
+            <input type="checkbox" name="consentement" required style="width:auto;min-height:0;margin-top:6px">
+            <span>J'accepte que mes informations soient utilisées pour répondre à ma demande, comme décrit dans la <a href="/confidentialite.html">politique de confidentialité</a>.</span>
+          </label>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-lg" type="submit">Envoyer le message</button>
+        </div>
+        <p class="form-note">Vos données ne servent qu'à vous répondre et sont supprimées au plus tard 12 mois après votre demande.</p>
+      </form>
+    </div>
+    <aside class="contact-side">
+      <div class="info-card reveal">
+        <h3>Par téléphone</h3>
+        <p><a class="btn btn-primary" href="tel:{{phone_tel}}">{{phone_display}}</a></p>
+        <p data-hours-line>Horaires du jour en cours de chargement.</p>
+      </div>
+      <div class="info-card reveal reveal-d1">
+        <h3>Sur Instagram</h3>
+        <p>Actualités, carte du jour, ouvertures exceptionnelles : <a href="{{instagram}}" rel="noopener" target="_blank">@gravity_1650 <span class="sr-only">(nouvelle fenêtre)</span></a>.</p>
+      </div>
+      <div class="info-card reveal reveal-d2">
+        <h3>Sur place</h3>
+        <address>{{address_street}}<br>Chamrousse 1650 (Recoin)<br>{{postal}} Chamrousse</address>
+        <p><a href="{{maps_dir}}" rel="noopener" target="_blank">Itinéraire <span class="sr-only">(Google Maps, nouvelle fenêtre)</span></a></p>
+      </div>
+      <div class="callout reveal reveal-d3">
+        <p><strong>Délai de réponse.</strong> Par téléphone, tout de suite pendant les heures d'ouverture. Par message, sous 24 h en saison.</p>
+      </div>
+    </aside>
+  </div>
+</section>

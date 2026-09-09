@@ -1,0 +1,142 @@
+<!--META
+{
+  "title": "Infos pratiques : horaires, accès, paiement",
+  "description": "Horaires du Gravity 1650 selon la saison (dès 8h en hiver), accès place de Belledonne à Chamrousse 1650, moyens de paiement (CB, tickets restaurant, chèques vacances), terrasse, animaux acceptés.",
+  "path": "/infos-pratiques.html",
+  "priority": "0.9",
+  "changefreq": "monthly",
+  "breadcrumbs": [["Accueil", "/"], ["Infos pratiques", "/infos-pratiques.html"]]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumb}}
+    <p class="eyebrow reveal">Infos pratiques</p>
+    <h1 class="reveal-lines"><span class="line"><span>Horaires, accès,</span></span><span class="line"><span>paiement.</span></span></h1>
+    <p class="lead reveal reveal-d1">Tout ce qu'il faut savoir avant de venir. Les horaires dépendent de la saison ; en cas de doute, appelez le <a href="tel:{{phone_tel}}">{{phone_display}}</a>.</p>
+    <p class="hero-status reveal reveal-d2" data-hours-badge><span class="dot" aria-hidden="true"></span><span data-hours-text>Horaires du jour en cours de chargement.</span></p>
+  </div>
+</section>
+
+<section class="section-tight" id="horaires" aria-labelledby="titre-horaires">
+  <div class="wrap split">
+    <div class="split-sticky">
+      <h2 id="titre-horaires" class="reveal">Horaires par saison</h2>
+      <p class="muted reveal reveal-d1">Les dates de saison suivent le calendrier de la station de Chamrousse et peuvent bouger de quelques jours d'une année à l'autre. Les horaires du jour sont publiés sur <a href="{{instagram}}" rel="noopener" target="_blank">Instagram</a>.</p>
+    </div>
+    <div class="hours reveal-scale">
+      <div class="hours-season" data-season="hiver">
+        <h3>Saison d'hiver <span class="tag" data-season-tag hidden>En ce moment</span></h3>
+        <p class="dates">De fin novembre à mi-avril, pendant l'ouverture du domaine skiable</p>
+        <dl><dt>Lundi au samedi</dt><dd>8h à 19h</dd><dt>Dimanche</dt><dd>Nous appeler</dd></dl>
+        <p class="hours-note">Café et petit-déjeuner dès 8h, avant la première benne.</p>
+      </div>
+      <div class="hours-season" data-season="ete">
+        <h3>Saison d'été <span class="tag" data-season-tag hidden>En ce moment</span></h3>
+        <p class="dates">De fin juin à fin août</p>
+        <dl><dt>Tous les jours</dt><dd>Horaires du jour par téléphone ou sur Instagram</dd></dl>
+        <p class="hours-note">Randonnée, bike park, terrasse et pétanque.</p>
+      </div>
+      <div class="hours-season" data-season="hors">
+        <h3>Hors saison <span class="tag" data-season-tag hidden>En ce moment</span></h3>
+        <p class="dates">Entre les saisons</p>
+        <dl><dt>Lundi au mercredi</dt><dd>10h à 18h</dd><dt>Jeudi au samedi</dt><dd>10h à 22h</dd><dt>Dimanche</dt><dd>Nous appeler</dd></dl>
+        <p class="hours-note">Le soir, du jeudi au samedi, uniquement sur réservation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight band-sand" id="paiement" aria-labelledby="titre-paiement">
+  <div class="wrap">
+    <h2 id="titre-paiement" class="reveal">Paiement et services</h2>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <h3>Moyens de paiement</h3>
+        <ul><li>Carte bancaire</li><li>Espèces</li><li>Tickets restaurant</li><li>Chèques vacances</li><li>Chèques</li></ul>
+      </div>
+      <div class="info-card reveal reveal-d1">
+        <h3>Sur place</h3>
+        <ul><li>Terrasse au soleil sur la place</li><li>Salle</li><li>Terrain de pétanque devant</li><li>Animaux acceptés</li></ul>
+      </div>
+      <div class="info-card reveal reveal-d2">
+        <h3>Services</h3>
+        <ul><li>Vente à emporter</li><li>Bar, licence IV</li><li>Petit-déjeuner dès 8h en hiver</li><li>Réservation par téléphone</li></ul>
+      </div>
+      <div class="info-card reveal reveal-d3">
+        <h3>Réservation</h3>
+        <p>Le midi, on trouve toujours une place. Le soir, ainsi que pour une fondue ou une raclette, réservez au <a href="tel:{{phone_tel}}">{{phone_display}}</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" id="acces" aria-labelledby="titre-acces">
+  <div class="wrap">
+    <h2 id="titre-acces" class="reveal">Accès</h2>
+    <div class="map-card reveal-scale">
+      <div class="map-body">
+        <address>
+          <strong>Gravity 1650</strong><br>
+          {{address_street}}<br>
+          Chamrousse 1650 (Recoin)<br>
+          {{postal}} Chamrousse, Isère
+        </address>
+        <ul>
+          <li><strong>À ski :</strong> le restaurant est à 50 m des pistes et du départ de la télécabine de la Croix de Chamrousse.</li>
+          <li><strong>À pied :</strong> sur la place de Belledonne, à côté de l'office de tourisme de Chamrousse 1650.</li>
+          <li><strong>En voiture :</strong> depuis Grenoble, environ 30 km par Uriage et la route de Chamrousse. Parkings de la station à quelques pas.</li>
+          <li><strong>En bus :</strong> arrêt Chamrousse 1650 (Recoin), à quelques pas de la place.</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="{{maps_dir}}" rel="noopener" target="_blank">Itinéraire Google Maps <span class="sr-only">(nouvelle fenêtre)</span></a>
+          <a class="btn btn-ghost" href="{{apple_maps}}" rel="noopener" target="_blank">Plans (iPhone) <span class="sr-only">(nouvelle fenêtre)</span></a>
+        </div>
+      </div>
+      <div class="map-art">
+        <svg viewBox="0 0 600 420" role="img" aria-labelledby="map2-title" focusable="false">
+          <title id="map2-title">Plan simplifié : le Gravity 1650 entre l'office de tourisme et la télécabine, à 50 mètres des pistes</title>
+          <rect width="600" height="420" fill="#E6EEF4"/>
+          <path d="M0 420 L0 120 L120 60 L240 110 L360 40 L480 100 L600 60 L600 420 Z" fill="#CFDCE6"/>
+          <path d="M0 420 L0 250 Q 150 220 300 245 T 600 235 L600 420 Z" fill="#F8F9FA"/>
+          <rect x="150" y="230" width="300" height="130" rx="10" fill="#E4D9CB"/>
+          <text x="300" y="252" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="700" fill="#6B5340" letter-spacing="1.5">PLACE DE BELLEDONNE</text>
+          <line x1="330" y1="230" x2="560" y2="70" stroke="#5B524B" stroke-width="2.5"/>
+          <rect x="310" y="222" width="40" height="30" rx="4" fill="#8C6D53"/>
+          <rect x="420" y="150" width="20" height="24" rx="4" fill="#B9412F"/>
+          <text x="470" y="132" font-family="Manrope, sans-serif" font-size="12" font-weight="700" fill="#211C19">Télécabine</text>
+          <rect x="176" y="270" width="80" height="60" rx="4" fill="#B7C9D6"/>
+          <text x="216" y="298" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="700" fill="#211C19">Office de</text>
+          <text x="216" y="312" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="700" fill="#211C19">tourisme</text>
+          <rect x="300" y="286" width="96" height="60" rx="4" fill="#B9412F"/>
+          <path d="M292 290 L348 258 L404 290 Z" fill="#8F3021"/>
+          <text x="348" y="322" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" letter-spacing="1">GRAVITY 1650</text>
+          <path d="M120 200 L260 130" stroke="#F8F9FA" stroke-width="10" stroke-linecap="round"/>
+          <path d="M150 215 L290 145" stroke="#F8F9FA" stroke-width="10" stroke-linecap="round"/>
+          <text x="180" y="120" font-family="Manrope, sans-serif" font-size="12" font-weight="700" fill="#211C19">Pistes</text>
+          <rect x="470" y="330" width="48" height="24" rx="3" fill="#F8F9FA" stroke="#5B524B" stroke-width="2"/>
+          <text x="494" y="347" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="#211C19">P</text>
+          <text x="300" y="404" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#5B524B">Plan simplifié, non à l'échelle</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight band-sky" id="avis" aria-labelledby="titre-avis-page">
+  <div class="wrap">
+    <h2 id="titre-avis-page" class="reveal">Extraits d'avis Google</h2>
+    <p class="muted reveal reveal-d1" style="max-width:60ch">Avis publiés sur Google par des clients, cités tels quels. L'intégralité des avis, notes comprises, est consultable sur la <a href="{{maps_place}}" rel="noopener" target="_blank">fiche Google du restaurant</a>.</p>
+    <div class="reviews">
+      <article class="review reveal"><blockquote>« Bon accueil, serveuse très sympathique, prix correct, bonne nourriture, je conseille vivement. »</blockquote><footer><strong>Judith G.</strong> · Avis Google · visite en juillet</footer></article>
+      <article class="review reveal reveal-d1"><blockquote>« Un bon petit snack à faire après une bonne descente de ski avec la serveuse Tania vraiment très aimable ! Je recommande ! »</blockquote><footer><strong>Alexis P.</strong> · Avis Google · visite en janvier</footer></article>
+      <article class="review reveal reveal-d2"><blockquote>« Très bon accueil, chaleureux et familial. Carte locale de bonne qualité. On reviendra. »</blockquote><footer><strong>Jérôme P.</strong> · Avis Google, 4 étoiles · visite en décembre</footer></article>
+      <article class="review reveal"><blockquote>« Très bien mangé. Belles quantités et service rapide ! Serveur et serveuse adorables ! Je recommande. »</blockquote><footer><strong>Actif Kiné Sport</strong> · Avis Google · visite en juillet</footer></article>
+      <article class="review reveal reveal-d1"><blockquote>« Jamais déçue. Cuisine, service, sourire... tout y est ! »</blockquote><footer><strong>Carine T.</strong> · Avis Google · visite en février</footer></article>
+      <article class="review reveal reveal-d2"><blockquote>« Super cadre ! Repas au top, très rassasiant après avoir skié. »</blockquote><footer><strong>Hugo M.</strong> · Avis Google · visite en janvier</footer></article>
+      <article class="review reveal"><blockquote>« Une belle découverte avec de bons produits et des personnes très accueillantes. Nous y retournerons avec plaisir. Merci. »</blockquote><footer><strong>Laure-Hélène C.</strong> · Avis Google · visite en février</footer></article>
+      <article class="review reveal reveal-d1"><blockquote>« Tout petit restaurant le soir mais grande qualité tant au niveau cuisine qu'accueil ! Merci de nous avoir fait passer une agréable dernière soirée en montagne ! »</blockquote><footer><strong>V. G.</strong> · Avis Google · visite en février</footer></article>
+      <article class="review reveal reveal-d2"><blockquote>« Super accueil et on y mange très bien ! Les serveurs super sympathiques. Il y a toujours de la place ! Je vous recommande vivement cet établissement. »</blockquote><footer><strong>Olivier P.</strong> · Avis Google · visite en décembre</footer></article>
+    </div>
+  </div>
+</section>

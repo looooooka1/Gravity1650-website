@@ -1,0 +1,63 @@
+{
+  "site": "site",
+  "pages": {
+    "404.html": {
+      "console": [],
+      "failed": [],
+      "overflow": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "h1": 1
+    },
+    "cgu.html": {
+      "console": [],
+      "failed": [],
+      "overflow": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "h1": 1
+    },
+    "confidentialite.html": {
+      "console": [],
+      "failed": [],
+      "overflow": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "h1": 1
+    },
+    "cookies.html": {
+      "console": [],
+      "failed": [],
+      "overflow": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "h1": 1
+    },
+    "index.html": {
+      "console": [],
+      "failed": [],
+      "overflow": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "h1": 1
+    },
+    "mentions-legales.html": {
+      "console": [],
+      "failed": [],
+      "overflow": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "h1": 1
+    }
+  },
+  "hard": [],
+  "soft": [
+    "mentions-legales.html: contains TODO marker for the owner to complete"
+  ]
+}

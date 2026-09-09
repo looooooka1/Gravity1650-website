@@ -1,0 +1,3 @@
+# Deploy this folder as the publish directory. 404.html is served automatically.
+[build]
+  publish = "."

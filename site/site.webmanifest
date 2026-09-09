@@ -1,0 +1,15 @@
+{
+  "name": "Gravity 1650",
+  "short_name": "Gravity 1650",
+  "description": "Snack, bar et restaurant au pied des pistes de Chamrousse 1650.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#131110",
+  "theme_color": "#131110",
+  "lang": "fr",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
