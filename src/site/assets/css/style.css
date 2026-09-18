@@ -243,13 +243,20 @@ button{font:inherit;color:inherit}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .hero .btn-ghost{--btn-fg:#F7F0E7;--btn-bd:rgba(247,240,231,.44);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .hero .btn-ghost:hover{--btn-bd:#F7F0E7;background:rgba(247,240,231,.14)}
+/* lisibilite renforcee du bouton fantome sur desktop, ou le fond du hero peut etre clair */
+@media (min-width:960px){
+  .hero .btn-ghost{--btn-bg:rgba(19,17,16,.55);--btn-bd:rgba(247,240,231,.55)}
+  .hero .btn-ghost:hover{--btn-bg:rgba(19,17,16,.72)}
+}
 
 .status{
   display:inline-flex;align-items:center;gap:10px;padding:9px 15px;border-radius:999px;
   background:rgba(19,17,16,.5);border:1px solid rgba(247,240,231,.24);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  font-size:.86rem;font-weight:500;color:#F2E9DE;width:fit-content
+  font-size:.86rem;font-weight:500;color:#F2E9DE;width:fit-content;
+  text-decoration:none;transition:transform .3s var(--ease),border-color .3s,background .3s
 }
+a.status:hover{transform:translateY(-2px);border-color:rgba(247,240,231,.5);background:rgba(19,17,16,.66)}
 .status .dot{width:7px;height:7px;border-radius:50%;background:#9A8E82;flex:none}
 .status.is-open .dot{background:#5FBF7D;animation:pulse 2.4s ease-in-out infinite}
 .status.is-closed .dot{background:#E0704C}
@@ -268,9 +275,14 @@ button{font:inherit;color:inherit}
 @media (max-width:760px){
   .hero{--plane-h:130vh;--back-a:-14vh;--back-b:-40vh;--front-a:-18vh;--front-b:-86vh}
   .hero-track{height:250vh}
+  /* le titre respire : on le remonte au-dessus du centre pour degager la pilule/adresse en haut
+     et le bloc statut/CTA en bas, qui se chevauchaient sur petit ecran */
+  .hero-mark{padding-bottom:22vh}
+  .hero-top{top:calc(var(--header-h) + 14px)}
   .wordmark .w-main{font-size:18.5vw}
   .wordmark .w-sub{font-size:9.4vw}
   .hero-ui{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  .hero-bottom{gap:14px}
   .hero-actions .btn{width:100%}
 }
 @media (max-width:470px){
@@ -346,6 +358,8 @@ button{font:inherit;color:inherit}
 .place-item b{display:block;font-family:var(--font-display);font-size:1.12rem;letter-spacing:-.02em;margin-bottom:7px}
 .place-item p{margin:0;color:var(--ink-2);font-size:.98rem}
 .place-num{font-size:.7rem;letter-spacing:.22em;color:var(--accent);display:block;margin-bottom:12px;font-weight:600}
+.lieu-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.place-media-sm{aspect-ratio:4/3;border-radius:var(--r);box-shadow:var(--shadow);margin:0}
 @media (min-width:900px){
   .place{grid-template-columns:.92fr 1.08fr;gap:70px;align-items:start}
   .place-sticky{position:sticky;top:calc(var(--header-h) + 34px)}
