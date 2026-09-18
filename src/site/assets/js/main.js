@@ -31,19 +31,16 @@
   /* ------------------------------------------------------------- horaires
      Dates de saison reprises de la fiche officielle de la station
      (hiver 29/11 au 12/04, été 28/06 au 24/08). À mettre à jour chaque année.
-     Jours : 0 = dimanche … 6 = samedi.                                      */
+     Jours : 0 = dimanche … 6 = samedi. Fermé en hors saison.                */
   var SEASONS = [
     { key: 'hiver', from: [11, 29], to: [4, 12],
-      days: { 1: ['08:00', '19:00'], 2: ['08:00', '19:00'], 3: ['08:00', '19:00'],
-              4: ['08:00', '19:00'], 5: ['08:00', '19:00'], 6: ['08:00', '19:00'], 0: null },
-      closedNote: 'Dimanche : appelez-nous pour les horaires du jour.' },
-    { key: 'ete', from: [6, 28], to: [8, 24], daily: true,
-      dailyNote: 'Ouvert tous les jours. Horaires du jour par téléphone ou sur Instagram.' },
-    { key: 'hors', fallback: true,
-      days: { 1: ['10:00', '18:00'], 2: ['10:00', '18:00'], 3: ['10:00', '18:00'],
-              4: ['10:00', '22:00'], 5: ['10:00', '22:00'], 6: ['10:00', '22:00'], 0: null },
-      closedNote: 'Dimanche : appelez-nous pour les horaires du jour.',
-      eveningNote: 'soir sur réservation' }
+      days: { 0: ['07:30', '22:00'], 1: ['07:30', '22:00'], 2: ['07:30', '22:00'],
+              3: ['07:30', '22:00'], 4: ['07:30', '22:00'], 5: ['07:30', '22:00'], 6: ['07:30', '22:00'] } },
+    { key: 'ete', from: [6, 28], to: [8, 24],
+      days: { 0: ['08:30', '18:00'], 1: ['08:30', '18:00'], 2: ['08:30', '18:00'],
+              3: ['08:30', '18:00'], 4: ['08:30', '18:00'], 5: ['08:30', '18:00'], 6: ['08:30', '18:00'] } },
+    { key: 'hors', fallback: true, closedSeason: true,
+      closedNote: 'Fermé en dehors des saisons hiver et été.' }
   ];
 
   function inRange(d, from, to) {
@@ -63,9 +60,9 @@
 
   function status(now) {
     var s = season(now), out = { season: s, open: null, text: '' };
-    if (s.daily) { out.text = s.dailyNote; return out; }
+    if (s.closedSeason) { out.open = false; out.text = s.closedNote; return out; }
     var h = s.days[now.getDay()];
-    if (!h) { out.text = s.closedNote; return out; }
+    if (!h) { out.open = false; out.text = s.closedNote; return out; }
     var mins = now.getHours() * 60 + now.getMinutes();
     var o = h[0].split(':'), c = h[1].split(':');
     var om = +o[0] * 60 + +o[1], cm = +c[0] * 60 + +c[1];
@@ -74,7 +71,6 @@
     if (out.open) out.text = 'Ouvert maintenant · ' + range;
     else if (mins < om) out.text = 'Ouvre à ' + fmt(h[0]) + ' · ' + range;
     else out.text = 'Fermé pour aujourd’hui · ' + range;
-    if (s.eveningNote && now.getDay() >= 4 && now.getDay() <= 6) out.text += ' · ' + s.eveningNote;
     return out;
   }
 
