@@ -85,6 +85,9 @@
       el.classList.toggle('is-open', st.open === true);
       el.classList.toggle('is-closed', st.open === false);
     });
+    document.querySelectorAll('[data-open-label]').forEach(function (el) {
+      el.textContent = st.open === true ? 'Nous sommes ouverts' : 'Nous sommes fermés';
+    });
     document.querySelectorAll('[data-season]').forEach(function (el) {
       var is = el.getAttribute('data-season') === st.season.key;
       el.classList.toggle('is-current', is);
