@@ -238,6 +238,8 @@
     var dawn = document.querySelector('.chap-matin');
     var sunSect = document.querySelector('[data-sun]');
     var sun = document.querySelector('[data-sun-disc]');
+    var aprIdx = chapters.findIndex(function (c) { return c.dataset.tod === 'apres'; });
+    var aprSun = document.querySelector('.l-apres');
     var lastY = window.scrollY, ticking = false, tod = '', shown = '', label = '';
 
     root.setAttribute('data-tod', 'matin');
@@ -298,6 +300,11 @@
         if (fr) {
           var q = easeOut(clamp((vh * 0.95 - fr.top) / (vh * 0.5), 0, 1));
           fog.style.setProperty('--q', q.toFixed(3));
+        }
+        // après-ski : la lueur descend et sort par le bas juste avant la guirlande du soir
+        if (aprSun && aprIdx > -1) {
+          var ar = cr[aprIdx];
+          aprSun.style.setProperty('--sy', clamp((vh * 0.5 - ar.top) / Math.max(1, ar.height - vh * 0.5), 0, 1).toFixed(3));
         }
         // midi : le soleil monte au zénith derrière le titre
         if (ur && ur.bottom > 0 && ur.top < vh) sun.style.setProperty('--sp', clamp((vh - ur.top) / (vh + ur.height * 0.5), 0, 1).toFixed(3));

@@ -4,7 +4,7 @@
    soir bleu nuit. La couleur de page change par chapitre (html[data-tod]).
    ========================================================================== */
 
-:root{--ease-io:cubic-bezier(.76,0,.24,1);--tod-dur:1.4s}
+:root{--ease-io:cubic-bezier(.76,0,.24,1);--tod-dur:3.2s;--tod-ease:cubic-bezier(.45,0,.25,1)}
 
 /* ---------- palette du jour ---------- */
 :root[data-tod="matin"]{--bg:#161A2B;--bg-2:#1D2236}
@@ -16,15 +16,17 @@
 :root[data-theme="light"][data-tod="apres"]{--bg:#F6E8D7;--bg-2:#EEDBC4}
 :root[data-theme="light"][data-tod="soir"]{--bg:#B9BFD3;--bg-2:#AAB1C8;--surface:#C9CEDF;--line:rgba(30,36,64,.14)}
 
-.page-day{transition:background-color var(--tod-dur) var(--ease),color .5s var(--ease)}
-.page-day .marquee,.page-day .hero-foot,.page-day .site-footer{transition:background-color var(--tod-dur) var(--ease)}
+.page-day{transition:background-color var(--tod-dur) var(--tod-ease),color .5s var(--ease)}
+.page-day .marquee,.page-day .hero-foot,.page-day .site-footer{transition:background-color var(--tod-dur) var(--tod-ease)}
 
 /* lumière du moment : quatre halos fixes, un seul visible */
 .daylight{position:fixed;inset:0;z-index:-1;pointer-events:none}
-.daylight i{position:absolute;inset:0;opacity:0;transition:opacity 1.8s var(--ease)}
+.daylight i{position:absolute;inset:0;opacity:0;transition:opacity var(--tod-dur) var(--tod-ease)}
 .l-matin{background:radial-gradient(60% 50% at 10% 0%,rgba(150,185,235,.16),transparent 70%)}
 .l-midi{background:radial-gradient(55% 45% at 50% -8%,rgba(255,226,170,.13),transparent 70%)}
-.l-apres{background:radial-gradient(65% 60% at 100% 90%,rgba(238,140,66,.2),transparent 70%)}
+/* après-ski : le soleil part du haut à droite et descend avec le défilement (--sy posé par immersif.js) */
+.l-apres{--sy:0;inset:-100vh 0 auto!important;height:200vh;background:radial-gradient(60% 27.5% at 96% 54%,rgba(255,170,90,.26),rgba(238,120,66,.12) 40%,transparent 72%);
+  transform:translate3d(0,calc(var(--sy) * 160vh),0);will-change:transform}
 .l-soir{background:radial-gradient(40% 35% at 86% 6%,rgba(170,182,255,.1),transparent 70%)}
 :root[data-tod="matin"] .l-matin,:root[data-tod="midi"] .l-midi,
 :root[data-tod="apres"] .l-apres,:root[data-tod="soir"] .l-soir{opacity:1}
@@ -137,7 +139,7 @@
 /* crête de Belledonne : la section suivante se découpe en sommets devant le soleil */
 .chap-matin{padding-bottom:clamp(150px,16vw,280px)}
 .ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(110px,15vw,240px);z-index:0;pointer-events:none;display:block}
-.ridge path{transition:fill var(--tod-dur) var(--ease)}
+.ridge path{transition:fill var(--tod-dur) var(--tod-ease)}
 .ridge-far{fill:color-mix(in oklab,var(--bg) 72%,#7A3A5A)}
 .ridge-near{fill:var(--bg)}
 :root[data-theme="light"] .ridge-far{fill:color-mix(in oklab,var(--bg) 70%,#C98A8A)}
