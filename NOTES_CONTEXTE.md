@@ -42,3 +42,5 @@ Cabine 3/4 en vraie perspective (point de fuite à droite), sans n°55. Forfaits
 - À faire chaque année : dates validFrom/validThrough du JSON-LD (META de index.html) + SEASONS (main.js) + llms.txt.
 - Correctifs : contenu visible sans JS (classe .js posée par theme.js), tableaux légaux défilables, préchargement hero par taille d'écran, Leaflet chargé à l'approche de la carte, pages cookies/confidentialité sans GA, CSP style-src 'self' + style-src-attr.
 - Dépôt : captures, brouillons (work/, screenshots/) et anciennes variantes (terrasse, piste) retirés du suivi git, gardés en local (.gitignore). Email client retiré des notes (reste dans l'ancien historique git).
+
+- 2026-11-02 : propriétaire refuse mention "Anciennement Le Grillon" sur le site. Retirée (page + llms.txt). Ne pas la remettre.
