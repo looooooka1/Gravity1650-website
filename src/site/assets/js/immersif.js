@@ -6,7 +6,6 @@
   var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(pointer: fine)').matches;
-  var desk = window.matchMedia('(min-width: 900px) and (min-height: 560px)');
   var vel = 0; // vitesse de défilement lissée, en px par image
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
@@ -104,29 +103,6 @@
     }
   }
 
-  /* ------------------------------- heures en compteur à rouleaux */
-  function initOdometers() {
-    var els = $all('[data-odo]');
-    els.forEach(function (el) {
-      var txt = el.textContent, k = 0;
-      el.textContent = '';
-      txt.split('').forEach(function (ch) {
-        if (!/\d/.test(ch)) { var s = document.createElement('span'); s.className = 'odo-sep'; s.textContent = ch; el.appendChild(s); return; }
-        var d = document.createElement('span'), col = document.createElement('span');
-        d.className = 'odo-d'; col.className = 'odo-col';
-        col.style.setProperty('--i', k++);
-        col.dataset.d = ch;
-        for (var n = 0; n < 10; n++) { var sp = document.createElement('span'); sp.textContent = n; col.appendChild(sp); }
-        col.style.transform = 'translate3d(0,' + (reduce ? -ch * 10 : -90) + '%,0)';
-        d.appendChild(col); el.appendChild(d);
-      });
-    });
-    if (reduce) return;
-    onView(els, function (el) {
-      $all('.odo-col', el).forEach(function (col) { col.style.transform = 'translate3d(0,' + (-col.dataset.d * 10) + '%,0)'; });
-    }, { threshold: 0.4 });
-  }
-
   /* ----------------------------------------------- chiffres qui comptent */
   function initCounters() {
     var els = $all('[data-count]');
@@ -142,100 +118,64 @@
     }, { threshold: 0.6 });
   }
 
-  /* ----------------------------- la carte : ardoises à l'horizontale */
-  var hs = { on: false, maxX: 0, offs: [], idx: -1 };
-  function initCarte() {
-    var sect = document.querySelector('[data-hs]');
-    if (!sect) return null;
-    var track = sect.querySelector('[data-hs-track]');
-    var ghost = sect.querySelector('[data-hs-ghost]');
-    var prog = sect.querySelector('[data-hs-prog]');
-    var outIdx = sect.querySelector('[data-hs-index]');
-    var outName = sect.querySelector('[data-hs-name]');
-    var slates = $all('[data-slate]', sect);
-    var names = slates.map(function (s) { var h = s.querySelector('h3'); return h ? h.textContent : ''; });
-    sect.querySelector('[data-hs-total]').textContent = String(slates.length);
-
-    var bars = names.map(function (n, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Aller à : ' + n);
-      b.addEventListener('click', function () { go(i); });
-      prog.appendChild(b);
-      return b;
-    });
-    slates.forEach(function (s) { $all('.mi', s).forEach(function (mi, n) { mi.style.setProperty('--n', n); }); });
-    if (reduce) slates.forEach(function (s) { s.classList.add('is-in'); });
-    else onView(slates, function (s) { s.classList.add('is-in'); }, { threshold: 0.2 });
-
-    function setIdx(i) {
-      if (i === hs.idx) return;
-      hs.idx = i;
-      outIdx.textContent = (i < 9 ? '0' : '') + (i + 1);
-      outName.textContent = names[i];
-      bars.forEach(function (b, j) { b.classList.toggle('is-on', j <= i); });
+  /* ------------- après-ski : les forfaits pendus se balancent au défilement */
+  function initPasses() {
+    var els = $all('[data-pass]');
+    if (!els.length || reduce) return null;
+    var st = els.map(function (el, i) { return { el: el, a: 0, w: 0, f: [1, -0.8, 0.65][i % 3] }; });
+    var raf = 0, live = false;
+    function step() {
+      raf = 0;
+      var moving = vel !== 0;
+      st.forEach(function (o) {
+        o.w += clamp(vel, -60, 60) * 0.012 * o.f - o.a * 0.05; // ressort : la vitesse pousse, le cordon rappelle
+        o.w *= 0.9;
+        o.a += o.w;
+        if (Math.abs(o.a) > 0.02 || Math.abs(o.w) > 0.02) moving = true;
+        o.el.style.setProperty('--s', o.a.toFixed(2) + 'deg');
+      });
+      if (moving && live) raf = requestAnimationFrame(step);
     }
-    function idxAt(x) {
-      var i = 0;
-      for (var j = 0; j < hs.offs.length; j++) if (hs.offs[j] <= x + track.clientWidth * 0.3) i = j;
-      return i;
-    }
-    function go(i) {
-      i = clamp(i, 0, slates.length - 1);
-      var behavior = reduce ? 'auto' : 'smooth';
-      if (hs.on) {
-        var top = sect.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: top + Math.min(hs.offs[i], hs.maxX) + 2, behavior: behavior });
-      } else track.scrollTo({ left: hs.offs[i], behavior: behavior });
-    }
-    track.addEventListener('keydown', function (e) {
-      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (d) { e.preventDefault(); go(hs.idx + d); }
-    });
-    track.addEventListener('scroll', function () { if (!hs.on) setIdx(idxAt(track.scrollLeft)); }, { passive: true });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { live = e[0].isIntersecting; }).observe(els[0].parentNode);
+    else live = true;
+    return function () { if (live && !raf) raf = requestAnimationFrame(step); };
+  }
 
-    function layout() {
-      hs.on = !reduce && desk.matches;
-      root.classList.toggle('hs-on', hs.on);
-      var pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
-      hs.offs = slates.map(function (s) { return s.offsetLeft - pad; });
-      if (!hs.on) {
-        sect.style.height = ''; track.style.transform = ''; ghost.style.transform = '';
-        setIdx(idxAt(track.scrollLeft));
-        return;
-      }
-      var last = slates[slates.length - 1];
-      hs.maxX = Math.max(0, last.offsetLeft + last.offsetWidth + pad - track.clientWidth);
-      sect.style.height = (hs.maxX + window.innerHeight) + 'px';
+  /* ------------------------ le soir : guirlande dessinée, ampoules posées */
+  function initGarland() {
+    var g = document.querySelector('[data-garland]');
+    if (!g) return;
+    var NS = 'http://www.w3.org/2000/svg', n = 21, pts = [];
+    function y(x) { var f = (x * 2) % 1; return 10 + 64 * Math.sin(Math.PI * f); } // deux festons entre trois poteaux
+    for (var k = 0; k <= 100; k++) pts.push(k * 10 + ',' + y(k / 100).toFixed(1));
+    var svg = document.createElementNS(NS, 'svg'), pl = document.createElementNS(NS, 'polyline');
+    svg.setAttribute('viewBox', '0 0 1000 120'); svg.setAttribute('preserveAspectRatio', 'none');
+    pl.setAttribute('points', pts.join(' '));
+    svg.appendChild(pl); g.appendChild(svg);
+    for (var i = 0; i < n; i++) {
+      var x = (i + 0.5) / n, b = document.createElement('i');
+      b.style.left = (x * 100).toFixed(2) + '%';
+      b.style.top = y(x).toFixed(1) + 'px';
+      b.style.setProperty('--i', i);
+      b.style.setProperty('--d', (Math.sin(i * 12.9898) * 43758.5453 % 1 + 1) % 1); // décalage pseudo-aléatoire du scintillement
+      g.appendChild(b);
     }
-    setIdx(0);
-    layout();
-    window.addEventListener('resize', layout, { passive: true });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
-
-    // appelé par la boucle de défilement : lecture puis écriture
-    return {
-      read: function () { return sect.getBoundingClientRect(); },
-      write: function (r, vh) {
-        if (!hs.on) return;
-        var p = clamp(-r.top / Math.max(1, r.height - vh), 0, 1), x = p * hs.maxX;
-        track.style.transform = 'translate3d(' + (-x).toFixed(1) + 'px,0,0)';
-        ghost.style.transform = 'translate3d(' + (-x * 0.35).toFixed(1) + 'px,-50%,0)';
-        setIdx(idxAt(x));
-      }
-    };
   }
 
   /* --------------------------- boucle de défilement : la journée avance */
-  function initDay(carte) {
+  function initDay(kick) {
     var chapters = $all('.chapter');
     var rail = document.querySelector('.dayrail');
     var clock = document.querySelector('[data-clock]');
     var clockLabel = document.querySelector('[data-clock-label]');
     var heroTrack = document.querySelector('[data-hero-track]');
-    var ridges = $all('[data-draw]');
     var clips = $all('[data-clip]');
     var marquees = $all('.marquee');
+    var cable = document.querySelector('[data-cable]');
+    var gondola = document.querySelector('[data-gondola]');
+    var fog = document.querySelector('[data-fog]');
+    var sunSect = document.querySelector('[data-sun]');
+    var sun = document.querySelector('[data-sun-disc]');
     var lastY = window.scrollY, ticking = false, tod = '', shown = '', label = '';
 
     root.setAttribute('data-tod', 'matin');
@@ -247,9 +187,11 @@
       // lectures
       var cr = chapters.map(function (c) { return c.getBoundingClientRect(); });
       var hr = heroTrack ? heroTrack.getBoundingClientRect() : null;
-      var rr = ridges.map(function (el) { return el.getBoundingClientRect(); });
       var kr = clips.map(function (el) { return el.getBoundingClientRect(); });
-      var sr = carte ? carte.read() : null;
+      var gr = cable ? cable.getBoundingClientRect() : null;
+      var gw = gondola ? gondola.offsetWidth : 0;
+      var fr = fog ? fog.getBoundingClientRect() : null;
+      var ur = sunSect ? sunSect.getBoundingClientRect() : null;
 
       vel += ((y - lastY) - vel) * 0.18;
       lastY = y;
@@ -260,31 +202,42 @@
       for (var i = 0; i < cr.length; i++) if (cr[i].top <= mid) at = i;
       var ch = chapters[at], b = cr[at];
       if (ch) {
-        var t = clamp((mid - b.top) / Math.max(1, b.height), 0, 1);
+        // l'heure de fin est atteinte un peu avant que le bas du chapitre entre à l'écran
+        var t = clamp((mid - b.top) / Math.max(1, b.height - vh * 0.6), 0, 1);
         var m = toMin(ch.dataset.from) + t * (toMin(ch.dataset.to) - toMin(ch.dataset.from));
         if (ch.dataset.tod !== tod) { tod = ch.dataset.tod; root.setAttribute('data-tod', tod); }
         if (rail) {
+          var done = cr[cr.length - 1].bottom < vh * 0.8; // les avis arrivent : la journée est finie
           rail.style.setProperty('--k', clamp((m - 450) / 870, 0, 1).toFixed(4));
           rail.classList.toggle('on-hero', !!hr && hr.bottom > mid);
-          rail.classList.toggle('is-off', hs.on && !!sr && sr.top < vh * 0.6 && sr.bottom > vh * 0.4); // les ardoises passent dessous
-          var s = hhmm(m);
+          rail.classList.toggle('is-done', done);
+          var s = hhmm(m), lb = t === 1 && at === cr.length - 1 ? 'Bonne soirée' : ch.dataset.label;
           if (s !== shown) { shown = s; clock.textContent = s; }
-          if (ch.dataset.label !== label) { label = ch.dataset.label; clockLabel.textContent = label; }
+          if (lb !== label) { label = lb; clockLabel.textContent = lb; }
         }
       }
 
-      ridges.forEach(function (el, k) {
-        var p = el.firstElementChild;
-        if (p) p.style.strokeDashoffset = String(1 - clamp((vh * 0.95 - rr[k].top) / (vh * 0.55), 0, 1));
-      });
       if (!reduce) {
         clips.forEach(function (el, k) {
           el.style.setProperty('--c', (1 - easeOut(clamp((vh - kr[k].top) / (vh * 0.75), 0, 1))).toFixed(3));
         });
         var sk = clamp(-vel * 0.12, -6, 6).toFixed(2);
         marquees.forEach(function (el) { el.style.transform = sk === '0.00' ? '' : 'skewX(' + sk + 'deg)'; });
+
+        // matin : la cabine monte le long du câble, la brume se lève sur le titre
+        if (gr && gr.bottom > 0 && gr.top < vh) {
+          var g = clamp((vh - gr.top) / (vh + gr.height), 0, 1);
+          var gx = (-0.02 + 1.04 * g) * gr.width - gw / 2, gy = (0.04 + 0.42 * g) * gr.height;
+          gondola.style.transform = 'translate3d(' + gx.toFixed(1) + 'px,' + gy.toFixed(1) + 'px,0) rotate(' + clamp(vel * 0.35, -9, 9).toFixed(2) + 'deg)';
+        }
+        if (fr) {
+          var q = easeOut(clamp((vh * 0.95 - fr.top) / (vh * 0.5), 0, 1));
+          fog.style.setProperty('--q', q.toFixed(3));
+        }
+        // midi : le soleil monte au zénith derrière le titre
+        if (ur && ur.bottom > 0 && ur.top < vh) sun.style.setProperty('--sp', clamp((vh - ur.top) / (vh + ur.height * 0.5), 0, 1).toFixed(3));
       }
-      if (carte) carte.write(sr, vh);
+      if (kick && vel !== 0) kick();
 
       if (vel !== 0) schedule(); // la vitesse retombe doucement après l'arrêt
     }
@@ -372,9 +325,11 @@
     splitWordmark();
     initIntro();
     initSnow();
-    initOdometers();
     initCounters();
-    initDay(initCarte());
+    initGarland();
+    initDay(initPasses());
+    onView($all('[data-stamp]'), function (el) { el.classList.add('is-in'); }, { threshold: 0.6 });
+    onView($all('[data-lights]'), function (el) { el.classList.add('is-on'); }, { threshold: 0.25 });
     initDial();
     initPointer();
   });

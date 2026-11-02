@@ -30,7 +30,7 @@
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css?v=a091e24dba">
-<link rel="stylesheet" href="/assets/vendor/leaflet.css?v=ce700c6b4a"><link rel="stylesheet" href="/assets/css/immersif.css?v=dac104e2ac"><link rel="preload" as="image" href="/assets/img/hero-back.webp?v=2" fetchpriority="high">
+<link rel="stylesheet" href="/assets/vendor/leaflet.css?v=ce700c6b4a"><link rel="stylesheet" href="/assets/css/immersif.css?v=3206a40eeb"><link rel="preload" as="image" href="/assets/img/hero-back.webp?v=2" fetchpriority="high">
 
 
 <script src="/assets/js/theme.js?v=2ca57fbda0"></script>
@@ -178,14 +178,18 @@
   </div>
 </section>
 
-<section class="section chap" aria-labelledby="t-matin">
+<section class="section chap chap-matin" aria-labelledby="t-matin">
+  <div class="cable-band" data-cable>
+  <svg class="cable" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="-2" y1="4" x2="102" y2="46"/></svg>
+  <div class="gondola" aria-hidden="true" data-gondola>
+    <svg viewBox="0 0 120 150"><path class="g-arm" d="M60 0v34M44 34h32"/><rect class="g-body" x="14" y="40" width="92" height="96" rx="16"/><rect class="g-win" x="24" y="52" width="72" height="40" rx="7"/><text x="60" y="122">07:30</text></svg>
+  </div>
+  </div>
   <div class="wrap">
     <header class="chap-head">
-      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>07:30</span></p>
       <p class="eyebrow rv">Le matin</p>
-      <h2 id="t-matin" class="rv-lines"><span class="ln"><span>Un café avant</span></span><span class="ln"><span>la première benne.</span></span></h2>
+      <h2 id="t-matin" class="fog" data-fog>Un café avant<br>la première benne.</h2>
       <p class="lead rv rv-1">Le restaurant ouvre dès 7h30 en saison d'hiver, 7 jours sur 7, à 50 mètres du départ de la télécabine de la Croix de Chamrousse.</p>
-      <svg class="ridge" data-draw viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 100 L80 82 L140 90 L210 52 L260 66 L330 30 L380 50 L430 40 L520 72 L600 58 L660 18 L720 46 L790 38 L860 70 L930 54 L1000 76 L1080 60 L1200 88"/></svg>
     </header>
     <p class="reader">On vient en chaussures de ski, en tenue de rando ou en famille. <em>On mange bien, vite, et face à Belledonne.</em></p>
   </div>
@@ -233,33 +237,48 @@
 <!-- ============================== 12:00 · MIDI ============================== -->
 <div class="chapter" data-tod="midi" data-from="12:00" data-to="15:30" data-label="Midi">
 
-<section class="section chap chap-tight" aria-labelledby="t-midi">
+<section class="section chap chap-midi" aria-labelledby="t-midi" data-sun>
   <div class="wrap">
-    <header class="chap-head">
-      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>12:00</span></p>
+    <header class="chap-head sun-head">
+      <div class="sun" aria-hidden="true" data-sun-disc><span>12:00</span></div>
       <p class="eyebrow rv">Midi</p>
-      <h2 id="t-midi" class="rv-lines"><span class="ln"><span>Entre deux</span></span><span class="ln"><span>descentes.</span></span></h2>
+      <h2 id="t-midi" class="sun-title">Entre deux<br>descentes.</h2>
       <p class="lead rv rv-1">Burgers maison, tartare au couteau, paninis chauds, salades. Sur place ou à emporter, et on repart sur les pistes.</p>
-      <svg class="ridge ridge-flip" data-draw viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 100 L80 82 L140 90 L210 52 L260 66 L330 30 L380 50 L430 40 L520 72 L600 58 L660 18 L720 46 L790 38 L860 70 L930 54 L1000 76 L1080 60 L1200 88"/></svg>
     </header>
   </div>
 </section>
 
-<section class="hs" id="carte" aria-labelledby="t-carte" data-hs>
-  <div class="hs-sticky">
-    <p class="hs-ghost" aria-hidden="true" data-hs-ghost>La carte · La carte · La carte</p>
-    <div class="wrap hs-head">
-      <div>
-        <p class="eyebrow">La carte</p>
-        <h2 id="t-carte" class="hs-title">Notre carte, à l'ardoise.</h2>
-      </div>
-      <div class="hs-meta" aria-live="polite">
-        <span class="hs-count"><b data-hs-index>01</b> / <span data-hs-total>14</span></span>
-        <span class="hs-name" data-hs-name>Nos burgers</span>
-      </div>
+<section class="section" id="carte" aria-labelledby="t-carte" data-carte>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow rv">La carte</p>
+      <h2 id="t-carte" class="rv-lines"><span class="ln"><span>Notre carte</span></span></h2>
+      <p class="lead rv rv-1">Choisissez une catégorie, elle se déplie avec les plats, les ingrédients et les prix.</p>
     </div>
-    <div class="hs-track" data-hs-track tabindex="0" aria-label="Catégories de la carte, faire défiler horizontalement">
-      <article class="slate" id="s-burgers" data-slate>
+    <div class="langs-wrap rv rv-1"><span class="langs-k">Langue</span><div class="langs" role="radiogroup" aria-label="Langue de la carte" data-langs>
+        <button type="button" role="radio" aria-checked="true" lang="fr" data-lang="fr">FR</button><button type="button" role="radio" aria-checked="false" lang="en" data-lang="en">EN</button><button type="button" role="radio" aria-checked="false" lang="es" data-lang="es">ES</button><button type="button" role="radio" aria-checked="false" lang="de" data-lang="de">DE</button><button type="button" role="radio" aria-checked="false" lang="zh" data-lang="zh">中文</button>
+      </div></div>
+
+    <div class="menu-tabs rv rv-1" role="tablist" aria-label="Catégories de la carte" data-menu-tabs>
+      <button class="menu-tab" role="tab" id="t-burgers" aria-controls="p-burgers" aria-selected="true" type="button">Nos burgers</button>
+      <button class="menu-tab" role="tab" id="t-brasserie" aria-controls="p-brasserie" aria-selected="false" tabindex="-1" type="button">Le côté brasserie</button>
+      <button class="menu-tab" role="tab" id="t-paninis" aria-controls="p-paninis" aria-selected="false" tabindex="-1" type="button">Nos paninis</button>
+      <button class="menu-tab" role="tab" id="t-salades" aria-controls="p-salades" aria-selected="false" tabindex="-1" type="button">Les salades</button>
+      <button class="menu-tab" role="tab" id="t-enfant" aria-controls="p-enfant" aria-selected="false" tabindex="-1" type="button">Menu enfant</button>
+      <button class="menu-tab" role="tab" id="t-crepes" aria-controls="p-crepes" aria-selected="false" tabindex="-1" type="button">Crêpes et gaufres</button>
+      <button class="menu-tab" role="tab" id="t-coupes" aria-controls="p-coupes" aria-selected="false" tabindex="-1" type="button">Coupes glacées</button>
+      <button class="menu-tab" role="tab" id="t-glaces" aria-controls="p-glaces" aria-selected="false" tabindex="-1" type="button">Nos glaces</button>
+      <button class="menu-tab" role="tab" id="t-plaisirs" aria-controls="p-plaisirs" aria-selected="false" tabindex="-1" type="button">Les petits plaisirs</button>
+      <button class="menu-tab" role="tab" id="t-fraiches" aria-controls="p-fraiches" aria-selected="false" tabindex="-1" type="button">Boissons fraîches</button>
+      <button class="menu-tab" role="tab" id="t-chaudes" aria-controls="p-chaudes" aria-selected="false" tabindex="-1" type="button">Boissons chaudes</button>
+      <button class="menu-tab" role="tab" id="t-bieres" aria-controls="p-bieres" aria-selected="false" tabindex="-1" type="button">Nos bières</button>
+      <button class="menu-tab" role="tab" id="t-cocktails" aria-controls="p-cocktails" aria-selected="false" tabindex="-1" type="button">Cocktails et apéritifs</button>
+      <button class="menu-tab" role="tab" id="t-digestifs" aria-controls="p-digestifs" aria-selected="false" tabindex="-1" type="button">Digestifs</button>
+    </div>
+
+    <div class="rv rv-2">
+
+      <div class="menu-panel is-active" id="p-burgers" role="tabpanel" aria-labelledby="t-burgers" tabindex="0">
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos burgers</h3><span class="menu-card-index">01 / 14</span></div>
           <p class="menu-card-desc">Servis avec frites. Supplément steak : 4,00 €.</p>
@@ -272,8 +291,9 @@
           </ul>
           <div class="menu-foot"><span>Également à emporter</span><span>Carte des allergènes disponible au bar</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-brasserie" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-brasserie" role="tabpanel" aria-labelledby="t-brasserie" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Le côté brasserie</h3><span class="menu-card-index">02 / 14</span></div>
           <p class="menu-card-desc">Les pièces du boucher et les assiettes qui tiennent au corps après une journée dehors.</p>
@@ -283,8 +303,9 @@
             <li class="mi"><div class="mi-top"><span class="mi-name">Steak à cheval</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Steak haché façon bouchère 180 g, œuf au plat, frites et salade verte.</p></li>
           </ul>
         </div>
-      </article>
-      <article class="slate" id="s-paninis" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-paninis" role="tabpanel" aria-labelledby="t-paninis" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos paninis</h3><span class="menu-card-index">03 / 14</span></div>
           <p class="menu-card-desc">Seul : 8,00 €. Formule frites : 11,00 €.</p>
@@ -295,8 +316,9 @@
           </ul>
           <div class="menu-foot"><span>Formule avec frites : 11,00 €</span><span>Également à emporter</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-salades" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-salades" role="tabpanel" aria-labelledby="t-salades" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Les salades</h3><span class="menu-card-index">04 / 14</span></div>
           <p class="menu-card-desc">Généreuses, à base de crudités fraîches.</p>
@@ -307,8 +329,9 @@
           </ul>
           <div class="menu-foot"><span>Carte des allergènes disponible au bar</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-enfant" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-enfant" role="tabpanel" aria-labelledby="t-enfant" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Le menu pas pour les grands</h3><span class="menu-card-index">05 / 14</span></div>
           <p class="menu-card-desc">Pour les moins de 12 ans.</p>
@@ -317,8 +340,9 @@
           </ul>
           <div class="menu-foot"><span>Une chaise haute peut être demandée en salle</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-crepes" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-crepes" role="tabpanel" aria-labelledby="t-crepes" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos crêpes et gaufres</h3><span class="menu-card-index">06 / 14</span></div>
           <p class="menu-card-desc">Le goûter de seize heures, sur place ou à emporter. Supplément chantilly : 1,00 €.</p>
@@ -331,8 +355,9 @@
           </ul>
           <div class="menu-foot"><span>Supplément chantilly : 1,00 €</span><span>Également à emporter</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-coupes" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-coupes" role="tabpanel" aria-labelledby="t-coupes" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos coupes glacées</h3><span class="menu-card-index">07 / 14</span></div>
           <p class="menu-card-desc">Servies en salle et en terrasse.</p>
@@ -345,8 +370,9 @@
           </ul>
           <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-glaces" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-glaces" role="tabpanel" aria-labelledby="t-glaces" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos glaces</h3><span class="menu-card-index">08 / 14</span></div>
           <p class="menu-card-desc">Parfums : vanille, chocolat, café, chartreuse, myrtille, framboise, cassis, citron, caramel beurre salé, rhum raisin.</p>
@@ -358,8 +384,9 @@
           </ul>
           <div class="menu-foot"><span>Également à emporter</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-plaisirs" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-plaisirs" role="tabpanel" aria-labelledby="t-plaisirs" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Les petits plaisirs</h3><span class="menu-card-index">09 / 14</span></div>
           <p class="menu-card-desc">Les desserts de la maison.</p>
@@ -370,8 +397,9 @@
           </ul>
           <div class="menu-foot"><span>Carte des allergènes disponible au bar</span></div>
         </div>
-      </article>
-      <article class="slate wide" id="s-fraiches" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-fraiches" role="tabpanel" aria-labelledby="t-fraiches" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos boissons fraîches</h3><span class="menu-card-index">10 / 14</span></div>
           <p class="menu-card-desc">Au bar, aux mêmes horaires que le restaurant.</p>
@@ -386,10 +414,11 @@
           </ul>
           <div class="menu-foot"><span>Également à emporter</span></div>
         </div>
-      </article>
-      <article class="slate wide" id="s-chaudes" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-chaudes" role="tabpanel" aria-labelledby="t-chaudes" tabindex="0" hidden>
         <div class="menu-card">
-          <div class="menu-card-head"><svg class="steam steam-sm" viewBox="0 0 60 70" aria-hidden="true"><path d="M18 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M30 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M42 64c-7-9 7-14 0-25s7-15 2-27"/></svg><h3>Nos boissons chaudes</h3><span class="menu-card-index">11 / 14</span></div>
+          <div class="menu-card-head"><h3>Nos boissons chaudes</h3><span class="menu-card-index">11 / 14</span></div>
           <p class="menu-card-desc">Servies dès l'ouverture, à 8h en saison d'hiver, avant la première benne.</p>
           <ul class="menu-list">
             <li class="mi"><div class="mi-top"><span class="mi-name">Expresso</span><span class="mi-dots"></span><span class="mi-price">2,00 €</span></div></li>
@@ -406,8 +435,9 @@
           </ul>
           <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span></div>
         </div>
-      </article>
-      <article class="slate wide" id="s-bieres" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-bieres" role="tabpanel" aria-labelledby="t-bieres" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos bières</h3><span class="menu-card-index">12 / 14</span></div>
           <p class="menu-card-desc">Prix indiqués pour 25 cl puis 50 cl.</p>
@@ -423,8 +453,9 @@
           </ul>
           <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span><span>Vente interdite aux mineurs</span></div>
         </div>
-      </article>
-      <article class="slate" id="s-cocktails" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-cocktails" role="tabpanel" aria-labelledby="t-cocktails" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Nos cocktails et apéritifs</h3><span class="menu-card-index">13 / 14</span></div>
           <p class="menu-card-desc">Pour l'après-ski, en terrasse quand le soleil donne.</p>
@@ -438,8 +469,9 @@
           </ul>
           <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span><span>Vente interdite aux mineurs</span></div>
         </div>
-      </article>
-      <article class="slate wide" id="s-digestifs" data-slate>
+      </div>
+
+      <div class="menu-panel" id="p-digestifs" role="tabpanel" aria-labelledby="t-digestifs" tabindex="0" hidden>
         <div class="menu-card">
           <div class="menu-card-head"><h3>Digestifs</h3><span class="menu-card-index">14 / 14</span></div>
           <p class="menu-card-desc">Servis en 4 cl.</p>
@@ -456,15 +488,13 @@
           </ul>
           <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span><span>Vente interdite aux mineurs</span></div>
         </div>
-      </article>
+      </div>
+
     </div>
-    <div class="wrap"><div class="hs-prog" data-hs-prog role="group" aria-label="Aller à une catégorie"></div></div>
+
+    <p class="menu-legal rv">La carte des allergènes est disponible au bar. Les prix sont affichés en euros, service compris. La carte évolue avec la saison et les arrivages, les nouveautés sont annoncées sur <a href="https://www.instagram.com/gravity_1650" rel="noopener" target="_blank" style="color:var(--accent)">Instagram</a>.</p>
   </div>
 </section>
-
-<div class="wrap">
-  <p class="menu-legal">La carte des allergènes est disponible au bar. Les prix sont affichés en euros, service compris. La carte évolue avec la saison et les arrivages, les nouveautés sont annoncées sur <a href="https://www.instagram.com/gravity_1650" rel="noopener" target="_blank" style="color:var(--accent)">Instagram</a>.</p>
-</div>
 
 <div class="marquee marquee-big" aria-hidden="true">
   <div class="marquee-row" data-loop>
@@ -477,34 +507,34 @@
 <!-- ============================== 16:00 · L'APRÈS-SKI ============================== -->
 <div class="chapter" data-tod="apres" data-from="16:00" data-to="18:45" data-label="L'après-ski">
 
-<section class="section chap" aria-labelledby="t-apres">
+<section class="section chap chap-apres" aria-labelledby="t-apres">
   <div class="wrap">
     <header class="chap-head">
-      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>16:00</span></p>
+      <p class="stamp" aria-hidden="true" data-stamp><span>16:00</span><small>Chamrousse 1650</small></p>
       <p class="eyebrow rv">L'après-ski</p>
       <h2 id="t-apres" class="rv-lines"><span class="ln"><span>Le goûter,</span></span><span class="ln"><span>puis l'après-ski.</span></span></h2>
       <p class="lead rv rv-1">Les crêpes de seize heures, le vin chaud maison, et l'Aperol en terrasse quand le soleil donne.</p>
     </header>
 
-    <div class="trio">
-      <article class="treat rv" data-spot>
-        <span class="treat-time">16h</span>
+    <div class="passes" data-passes>
+      <article class="pass" data-pass style="--r:-5deg">
+        <span class="pass-top"><b>Forfait goûter</b><i>16h</i></span>
         <h3>Crêpe Nutella</h3>
         <p>Le goûter, sur place ou à emporter.</p>
-        <b class="treat-price">5,00 €</b>
+        <span class="pass-foot"><b class="pass-price">5,00 €</b><span class="pass-code" aria-hidden="true"></span></span>
       </article>
-      <article class="treat rv rv-1" data-spot>
-        <span class="treat-time">17h</span>
+      <article class="pass" data-pass style="--r:3deg">
+        <span class="pass-top"><b>Forfait réchauffe</b><i>17h</i></span>
         <h3>Vin chaud maison</h3>
         <p>Pour se réchauffer les mains en sortant des pistes.</p>
-        <b class="treat-price">6,00 €</b>
+        <span class="pass-foot"><b class="pass-price">6,00 €</b><span class="pass-code" aria-hidden="true"></span></span>
         <svg class="steam" viewBox="0 0 60 70" aria-hidden="true"><path d="M18 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M30 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M42 64c-7-9 7-14 0-25s7-15 2-27"/></svg>
       </article>
-      <article class="treat rv rv-2" data-spot>
-        <span class="treat-time">18h</span>
+      <article class="pass" data-pass style="--r:-2deg">
+        <span class="pass-top"><b>Forfait terrasse</b><i>18h</i></span>
         <h3>Aperol Spritz</h3>
         <p>En terrasse, face aux pistes.</p>
-        <b class="treat-price">9,00 €</b>
+        <span class="pass-foot"><b class="pass-price">9,00 €</b><span class="pass-code" aria-hidden="true"></span></span>
       </article>
     </div>
     <p class="treat-legal">L'abus d'alcool est dangereux pour la santé. Vin chaud et Aperol réservés aux adultes.</p>
@@ -532,14 +562,14 @@
 <!-- ============================== 19:00 · LE SOIR ============================== -->
 <div class="chapter" data-tod="soir" data-from="19:00" data-to="22:00" data-label="Le soir">
 
-<section class="section chap" id="horaires" aria-labelledby="t-horaires">
+<section class="section chap chap-soir" id="horaires" aria-labelledby="t-horaires" data-lights>
+  <div class="garland" aria-hidden="true" data-garland></div>
   <div class="wrap">
     <header class="chap-head">
-      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>19:00</span></p>
+      <p class="neon" aria-hidden="true">19:00</p>
       <p class="eyebrow rv">Le soir · Horaires</p>
-      <h2 id="t-horaires" class="rv-lines"><span class="ln"><span>Se retrouver</span></span><span class="ln"><span>autour d'un verre.</span></span></h2>
+      <h2 id="t-horaires" class="glow-title">Se retrouver autour d'un verre.</h2>
       <p class="lead rv rv-1">Trois saisons, trois rythmes. Le cadran est à l'heure : il montre si l'on est ouverts en ce moment. Survolez une saison pour voir ses horaires.</p>
-      <svg class="ridge" data-draw viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 100 L80 82 L140 90 L210 52 L260 66 L330 30 L380 50 L430 40 L520 72 L600 58 L660 18 L720 46 L790 38 L860 70 L930 54 L1000 76 L1080 60 L1200 88"/></svg>
     </header>
 
     <div class="clock-grid">
@@ -588,6 +618,8 @@
     </div>
   </div>
 </section>
+
+</div>
 
 <section class="section" id="avis" aria-labelledby="t-avis">
   <div class="wrap">
@@ -725,7 +757,6 @@
   </div>
 </section>
 
-</div>
 </main>
 
 <footer class="site-footer">
@@ -782,6 +813,6 @@
 </div>
 
 <script src="/assets/js/main.js?v=d932ffb549" defer></script>
-<script src="/assets/vendor/leaflet.js?v=dc71f8a688" defer></script><script src="/assets/vendor/lenis.min.js?v=a978b0d217" defer></script><script src="/assets/js/immersif.js?v=1a2db2eb2a" defer></script>
+<script src="/assets/vendor/leaflet.js?v=dc71f8a688" defer></script><script src="/assets/vendor/lenis.min.js?v=a978b0d217" defer></script><script src="/assets/js/carte-langues.js?v=6c36f1688d" defer></script><script src="/assets/js/immersif.js?v=e124a90ceb" defer></script>
 </body>
 </html>
