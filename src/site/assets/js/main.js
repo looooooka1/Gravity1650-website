@@ -211,13 +211,26 @@
     var vh = window.innerHeight, ticking = false;
     window.addEventListener('resize', function () { vh = window.innerHeight; }, { passive: true });
 
+    // p lissé : la molette avance par crans, la scène suit en douceur
+    var heroP = -1;
+
     function frame() {
       ticking = false;
 
+      // lectures d'abord, écritures ensuite : pas de mise en page forcée à chaque image
+      var target = 0;
       if (hero && track) {
-        var r = track.getBoundingClientRect();
         var span = Math.max(1, track.offsetHeight - vh);
-        var p = clamp(-r.top / span, 0, 1);
+        target = clamp(-track.getBoundingClientRect().top / span, 0, 1);
+      }
+      var rb = readers.map(function (el) { return el.getBoundingClientRect(); });
+      var kbb = kb.map(function (el) { return el.getBoundingClientRect(); });
+
+      if (hero && track) {
+        heroP = heroP < 0 ? target : heroP + (target - heroP) * 0.14;
+        if (Math.abs(target - heroP) < 0.0004) heroP = target;
+        else onScroll();
+        var p = heroP;
         hero.style.setProperty('--p', p.toFixed(4));
         // l'interface du hero s'efface tôt, la scène continue seule
         if (heroUi) {
@@ -228,16 +241,16 @@
         if (cue) cue.style.opacity = String(clamp(1 - p / 0.14, 0, 1));
       }
 
-      readers.forEach(function (el) {
-        var b = el.getBoundingClientRect();
+      readers.forEach(function (el, k) {
+        var b = rb[k];
         var t = clamp((vh * 0.86 - b.top) / (vh * 0.5 + b.height * 0.5), 0, 1);
         var ws = el.querySelectorAll('w');
         var n = Math.round(t * ws.length);
         for (var i = 0; i < ws.length; i++) ws[i].classList.toggle('on', i < n);
       });
 
-      kb.forEach(function (el) {
-        var b = el.getBoundingClientRect();
+      kb.forEach(function (el, k) {
+        var b = kbb[k];
         if (b.bottom < 0 || b.top > vh) return;
         var t = (vh - b.top) / (vh + b.height);
         el.style.transform = 'scale(1.08) translate3d(0,' + ((t - 0.5) * -34).toFixed(1) + 'px,0)';

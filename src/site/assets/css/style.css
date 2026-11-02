@@ -219,7 +219,10 @@ button{font:inherit;color:inherit}
 .plane-back{z-index:1;transform:translate3d(0,calc(var(--back-a) * (1 - var(--p)) + var(--back-b) * var(--p)),0)}
 .plane-front{z-index:3;transform:translate3d(0,calc(var(--front-a) * (1 - var(--p)) + var(--front-b) * var(--p)),0)}
 
-.hero-mark{position:absolute;inset:0;z-index:2;display:grid;place-items:center;pointer-events:none;padding-inline:var(--gutter)}
+.hero-mark{position:absolute;inset:0;z-index:2;display:grid;place-items:center;pointer-events:none;padding-inline:var(--gutter);
+  /* le logo descend pendant que la neige monte : en fin de course il passe tout entier sous la crete (~88% de la photo) */
+  --mark-b:max(0px,calc(var(--photo-b) * .92 + var(--front-b) - 50vh + min(10vw,8.5rem)));
+  transform:translate3d(0,calc(var(--p) * var(--mark-b)),0);will-change:transform}
 .wordmark{
   margin:0;text-align:center;font-family:var(--font-display);font-weight:900;
   color:#111011;line-height:.82;letter-spacing:-.045em;
