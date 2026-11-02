@@ -1,0 +1,655 @@
+<!--META
+{
+  "title": "Gravity 1650, une journée au pied des pistes (version test)",
+  "title_is_full": true,
+  "description": "Version de test immersive du site Gravity 1650 : une journée à Chamrousse 1650, du café de 7h30 au verre du soir.",
+  "path": "/test-immersif.html",
+  "robots": "noindex, nofollow",
+  "home": "",
+  "body_class": "page-home page-day",
+  "extra_head": "<link rel=\"stylesheet\" href=\"/assets/vendor/leaflet.css\"><link rel=\"stylesheet\" href=\"/assets/css/immersif.css\"><link rel=\"preload\" as=\"image\" href=\"/assets/img/hero-back.webp?v=2\" fetchpriority=\"high\">",
+  "extra_scripts": "<script src=\"/assets/vendor/leaflet.js\" defer></script><script src=\"/assets/vendor/lenis.min.js\" defer></script><script src=\"/assets/js/immersif.js\" defer></script>"
+}
+-->
+<div class="intro" aria-hidden="true" data-intro>
+  <div class="intro-in">
+    <p class="eyebrow">Chamrousse · Altitude</p>
+    <p class="intro-alt"><span data-intro-count>1650</span><small>m</small></p>
+    <span class="intro-bar"><i></i></span>
+  </div>
+</div>
+
+<div class="daylight" aria-hidden="true"><i class="l-matin"></i><i class="l-midi"></i><i class="l-apres"></i><i class="l-soir"></i></div>
+
+<aside class="dayrail" aria-hidden="true">
+  <span class="dr-time" data-clock>07:30</span>
+  <span class="dr-label" data-clock-label>Le matin</span>
+  <span class="dr-line">
+    <i class="dr-dot"></i>
+    <b style="--at:0">7h30</b><b style="--at:.31">12h</b><b style="--at:.586">16h</b><b style="--at:.793">19h</b><b style="--at:1">22h</b>
+  </span>
+</aside>
+
+<!-- ============================== 07:30 · LE MATIN ============================== -->
+<div class="chapter" data-tod="matin" data-from="07:30" data-to="11:45" data-label="Le matin">
+
+<section class="hero" data-hero aria-label="Gravity 1650, au pied des pistes de Chamrousse">
+  <div class="hero-track" data-hero-track>
+    <div class="hero-pin">
+      <div class="hero-stage">
+
+        <div class="plane plane-back">
+          <picture>
+            <source media="(max-width: 760px)" srcset="/assets/img/hero-back-p.webp?v=2" width="1080" height="1920">
+            <source media="(max-width: 1300px)" srcset="/assets/img/hero-back-1200.webp?v=2" width="1200" height="1200">
+            <img class="plane-img" src="/assets/img/hero-back.webp?v=2" width="2048" height="2048" fetchpriority="high"
+                 alt="Le massif de Belledonne enneigé au lever du soleil, au-dessus d'une mer de nuages dorés, vu depuis Chamrousse.">
+          </picture>
+        </div>
+
+        <div class="hero-mark">
+          <h1 class="wordmark" data-split aria-label="Gravity 1650">
+            <span class="w-main">GRAVITY</span>
+            <span class="w-sub">1650</span>
+          </h1>
+        </div>
+
+        <div class="plane plane-front">
+          <picture>
+            <source media="(max-width: 760px)" srcset="/assets/img/hero-front-p.webp?v=2" width="1080" height="3840">
+            <source media="(max-width: 1300px)" srcset="/assets/img/hero-front-1200.webp?v=2" width="1200" height="2400">
+            <img class="plane-img" src="/assets/img/hero-front.webp?v=2" width="2048" height="4096" alt="">
+          </picture>
+          <div class="hero-foot">
+            <div class="marquee" aria-hidden="true">
+              <div class="marquee-row" data-loop>
+                <span>Burgers maison</span><span>Tartare au couteau</span><span>Paninis</span><span>Salades</span><span>Crêpes et gaufres</span><span>Coupes glacées</span><span>Vin chaud maison</span><span>Bières pression</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <canvas class="snow" data-snow aria-hidden="true"></canvas>
+        <div class="hero-grade" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-ui" data-hero-ui>
+        <div class="hero-top">
+          <div class="wrap"><p class="eyebrow hero-eyebrow">Chamrousse 1650 · Recoin · Isère</p></div>
+        </div>
+        <div class="wrap hero-bottom">
+          <span class="status" data-status aria-live="polite">
+            <span class="dot" aria-hidden="true"></span><span data-open-label>Horaires en cours de chargement</span>
+          </span>
+          <p class="hero-tagline">Snack, bar et restaurant au pied des pistes.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" data-magnetic href="tel:{{phone_tel}}">Appeler le {{phone_display}}</a>
+            <a class="btn btn-ghost btn-lg" data-magnetic href="#carte">Voir la carte</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="scroll-cue" data-cue aria-hidden="true"><i></i> Défiler</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" aria-label="Informations clés">
+  <div class="wrap">
+    <div class="facts-grid">
+      <div class="fact rv"><b><span data-count="50">50</span> m</b><span>des pistes et du départ de la télécabine</span></div>
+      <div class="fact rv rv-1"><b>Dès 7h30</b><span>en saison d'hiver, 7 jours sur 7</span></div>
+      <div class="fact rv rv-2"><b><span data-count="70">70</span> places</b><span>en terrasse, sur la place de Belledonne</span></div>
+      <div class="fact rv rv-3"><b><span data-count="25">25</span> places</b><span>en salle, au cadre chaleureux</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section chap" aria-labelledby="t-matin">
+  <div class="wrap">
+    <header class="chap-head">
+      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>07:30</span></p>
+      <p class="eyebrow rv">Le matin</p>
+      <h2 id="t-matin" class="rv-lines"><span class="ln"><span>Un café avant</span></span><span class="ln"><span>la première benne.</span></span></h2>
+      <p class="lead rv rv-1">Le restaurant ouvre dès 7h30 en saison d'hiver, 7 jours sur 7, à 50 mètres du départ de la télécabine de la Croix de Chamrousse.</p>
+      <svg class="ridge" data-draw viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 100 L80 82 L140 90 L210 52 L260 66 L330 30 L380 50 L430 40 L520 72 L600 58 L660 18 L720 46 L790 38 L860 70 L930 54 L1000 76 L1080 60 L1200 88"/></svg>
+    </header>
+    <p class="reader">On vient en chaussures de ski, en tenue de rando ou en famille. <em>On mange bien, vite, et face à Belledonne.</em></p>
+  </div>
+</section>
+
+<section class="section" id="lieu" aria-labelledby="t-lieu">
+  <div class="wrap place">
+    <div class="place-sticky">
+      <figure class="place-media" data-clip>
+        <img src="/assets/img/le-lieu.webp?v=2" width="1200" height="1600" loading="lazy" data-kenburns
+             alt="Le massif de Belledonne au-dessus d'une mer de nuages, au lever du jour depuis Chamrousse.">
+        <figcaption>Le massif de Belledonne depuis la station, au petit matin.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <p class="eyebrow rv">Le lieu</p>
+      <h2 id="t-lieu" class="rv-lines">
+        <span class="ln"><span>Un restaurant à</span></span>
+        <span class="ln"><span>50 m des pistes.</span></span>
+      </h2>
+      <p class="lead rv rv-1">Entièrement rénové. Une salle de 25 places au cadre chaleureux, une terrasse de 70 places au soleil face aux pistes, et la télécabine de la Croix de Chamrousse juste devant.</p>
+      <div class="place-items" style="margin-top:36px">
+        <article class="place-item rv rv-1" data-spot>
+          <span class="place-num">01</span>
+          <b>Au départ de la télécabine</b>
+          <p>Café dès 7h30 avant la première benne, burger ou panini chaud entre deux descentes. On pose les skis, on repart.</p>
+        </article>
+        <article class="place-item rv rv-2" data-spot>
+          <span class="place-num">02</span>
+          <b>La terrasse, sur la place</b>
+          <p>70 places assises au soleil, sur la place de Belledonne, à côté de l'office de tourisme. Bain de soleil après le ski, terrain de pétanque devant l'été.</p>
+        </article>
+        <article class="place-item rv rv-3" data-spot>
+          <span class="place-num">03</span>
+          <b>Le soir, se retrouver autour d'un verre</b>
+          <p>Un cadre convivial pour se retrouver entre amis ou collègues après le ski. On vient partager un verre et déguster nos planches de charcuterie et de fromage.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============================== 12:00 · MIDI ============================== -->
+<div class="chapter" data-tod="midi" data-from="12:00" data-to="15:30" data-label="Midi">
+
+<section class="section chap chap-tight" aria-labelledby="t-midi">
+  <div class="wrap">
+    <header class="chap-head">
+      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>12:00</span></p>
+      <p class="eyebrow rv">Midi</p>
+      <h2 id="t-midi" class="rv-lines"><span class="ln"><span>Entre deux</span></span><span class="ln"><span>descentes.</span></span></h2>
+      <p class="lead rv rv-1">Burgers maison, tartare au couteau, paninis chauds, salades. Sur place ou à emporter, et on repart sur les pistes.</p>
+      <svg class="ridge ridge-flip" data-draw viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 100 L80 82 L140 90 L210 52 L260 66 L330 30 L380 50 L430 40 L520 72 L600 58 L660 18 L720 46 L790 38 L860 70 L930 54 L1000 76 L1080 60 L1200 88"/></svg>
+    </header>
+  </div>
+</section>
+
+<section class="hs" id="carte" aria-labelledby="t-carte" data-hs>
+  <div class="hs-sticky">
+    <p class="hs-ghost" aria-hidden="true" data-hs-ghost>La carte · La carte · La carte</p>
+    <div class="wrap hs-head">
+      <div>
+        <p class="eyebrow">La carte</p>
+        <h2 id="t-carte" class="hs-title">Notre carte, à l'ardoise.</h2>
+      </div>
+      <div class="hs-meta" aria-live="polite">
+        <span class="hs-count"><b data-hs-index>01</b> / <span data-hs-total>14</span></span>
+        <span class="hs-name" data-hs-name>Nos burgers</span>
+      </div>
+    </div>
+    <div class="hs-track" data-hs-track tabindex="0" aria-label="Catégories de la carte, faire défiler horizontalement">
+      <article class="slate" id="s-burgers" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos burgers</h3><span class="menu-card-index">01 / 14</span></div>
+          <p class="menu-card-desc">Servis avec frites. Supplément steak : 4,00 €.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Burger Classic</span><span class="mi-dots"></span><span class="mi-price">16,00 €</span></div><p class="mi-desc">Salade, tomates, compotée d'échalotes, steak, cheddar, sauce burger.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Burger Montagnard</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Salade, tomates, compotée d'échalotes, steak, raclette, lard grillé, sauce poivre.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Burger Blue Montain</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Salade, tomates, compotée d'échalotes, steak, bleu de Sassenage, lard grillé, sauce mayonnaise aux noix.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Américain</span><span class="mi-dots"></span><span class="mi-price">16,00 €</span></div><p class="mi-desc">Pain ciabatta, salade, tomates, steak, cheddar, sauce burger.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Portion de frites</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>Également à emporter</span><span>Carte des allergènes disponible au bar</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-brasserie" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Le côté brasserie</h3><span class="menu-card-index">02 / 14</span></div>
+          <p class="menu-card-desc">Les pièces du boucher et les assiettes qui tiennent au corps après une journée dehors.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Entrecôte française maturée, environ 250 g</span><span class="mi-dots"></span><span class="mi-price">28,00 €</span></div><p class="mi-desc">Pièce du boucher tendre et savoureuse, servie avec frites et salade verte.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Tartare français au couteau, environ 180 g</span><span class="mi-dots"></span><span class="mi-price">22,00 €</span></div><p class="mi-desc">Préparé traditionnellement, accompagné de ses frites et d'une salade verte.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Steak à cheval</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Steak haché façon bouchère 180 g, œuf au plat, frites et salade verte.</p></li>
+          </ul>
+        </div>
+      </article>
+      <article class="slate" id="s-paninis" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos paninis</h3><span class="menu-card-index">03 / 14</span></div>
+          <p class="menu-card-desc">Seul : 8,00 €. Formule frites : 11,00 €.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Poulet</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div><p class="mi-desc">Huile d'olive, basilic, tomates fraîches, poulet, mozzarella.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Jambon blanc</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div><p class="mi-desc">Huile d'olive, basilic, tomates fraîches, jambon blanc, mozzarella.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">3 fromages</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div><p class="mi-desc">Huile d'olive, basilic, tomates fraîches, bleu, emmental, mozzarella.</p></li>
+          </ul>
+          <div class="menu-foot"><span>Formule avec frites : 11,00 €</span><span>Également à emporter</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-salades" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Les salades</h3><span class="menu-card-index">04 / 14</span></div>
+          <p class="menu-card-desc">Généreuses, à base de crudités fraîches.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Salade César</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Crudités, poulet croustillant, olives noires, sauce césar, parmesan.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Salade grenobloise</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Crudités, bleu de Sassenage, jambon de pays, noix, croûtons, sauce vinaigrette.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Salade croustillante</span><span class="mi-dots"></span><span class="mi-price">18,00 €</span></div><p class="mi-desc">Crudités, chèvre croustillant, lard grillé, oignons frits, sauce vinaigrette.</p></li>
+          </ul>
+          <div class="menu-foot"><span>Carte des allergènes disponible au bar</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-enfant" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Le menu pas pour les grands</h3><span class="menu-card-index">05 / 14</span></div>
+          <p class="menu-card-desc">Pour les moins de 12 ans.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Menu complet</span><span class="mi-dots"></span><span class="mi-price">13,90 €</span></div><p class="mi-desc">Sirop à l'eau au choix, puis steak haché frites ou poulet croustillant frites, et une boule de glace.</p></li>
+          </ul>
+          <div class="menu-foot"><span>Une chaise haute peut être demandée en salle</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-crepes" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos crêpes et gaufres</h3><span class="menu-card-index">06 / 14</span></div>
+          <p class="menu-card-desc">Le goûter de seize heures, sur place ou à emporter. Supplément chantilly : 1,00 €.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Sucre</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Nutella</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Crème de marrons</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Caramel beurre salé</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Confiture myrtille</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>Supplément chantilly : 1,00 €</span><span>Également à emporter</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-coupes" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos coupes glacées</h3><span class="menu-card-index">07 / 14</span></div>
+          <p class="menu-card-desc">Servies en salle et en terrasse.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Coupe Dame Blanche</span><span class="mi-dots"></span><span class="mi-price">9,50 €</span></div><p class="mi-desc">Glace vanille, chocolat fondu, chantilly, amande grillée.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Coupe chocolat liégeois</span><span class="mi-dots"></span><span class="mi-price">9,50 €</span></div><p class="mi-desc">Glace vanille, glace chocolat, chocolat fondu, chantilly, amande grillée.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Coupe café liégeois</span><span class="mi-dots"></span><span class="mi-price">9,50 €</span></div><p class="mi-desc">Glace vanille, glace café, expresso, chantilly, amande grillée.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Coupe des bois</span><span class="mi-dots"></span><span class="mi-price">10,00 €</span></div><p class="mi-desc">Glace vanille, glace myrtille, coulis de fruits rouges, chantilly, amande grillée.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Coupe Chartreuse</span><span class="mi-dots"></span><span class="mi-price">10,50 €</span></div><p class="mi-desc">Glace chartreuse, chartreuse verte.</p><p class="mi-note">Contient de l'alcool, réservée aux adultes</p></li>
+          </ul>
+          <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-glaces" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos glaces</h3><span class="menu-card-index">08 / 14</span></div>
+          <p class="menu-card-desc">Parfums : vanille, chocolat, café, chartreuse, myrtille, framboise, cassis, citron, caramel beurre salé, rhum raisin.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">1 boule</span><span class="mi-dots"></span><span class="mi-price">3,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">2 boules</span><span class="mi-dots"></span><span class="mi-price">6,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">3 boules</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Suppléments</span><span class="mi-dots"></span><span class="mi-price">1,00 €</span></div><p class="mi-desc">Chocolat fondu maison, coulis de fruits rouges ou chantilly.</p></li>
+          </ul>
+          <div class="menu-foot"><span>Également à emporter</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-plaisirs" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Les petits plaisirs</h3><span class="menu-card-index">09 / 14</span></div>
+          <p class="menu-card-desc">Les desserts de la maison.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Fondant au chocolat</span><span class="mi-dots"></span><span class="mi-price">7,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Nougat glacé</span><span class="mi-dots"></span><span class="mi-price">7,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Tarte myrtilles</span><span class="mi-dots"></span><span class="mi-price">7,50 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>Carte des allergènes disponible au bar</span></div>
+        </div>
+      </article>
+      <article class="slate wide" id="s-fraiches" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos boissons fraîches</h3><span class="menu-card-index">10 / 14</span></div>
+          <p class="menu-card-desc">Au bar, aux mêmes horaires que le restaurant.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Cristaline</span><span class="mi-dots"></span><span class="mi-price">2,50 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Sirop à l'eau</span><span class="mi-dots"></span><span class="mi-price">2,50 €</span></div><p class="mi-desc">Grenadine, fraise, pêche, citron, cassis, kiwi, menthe, orgeat.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Limonade</span><span class="mi-dots"></span><span class="mi-price">3,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Diabolo</span><span class="mi-dots"></span><span class="mi-price">3,50 €</span></div><p class="mi-desc">Grenadine, fraise, pêche, citron, cassis, kiwi, menthe, orgeat.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Jus de fruits</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div><p class="mi-desc">Orange, pomme, fraise, abricot, ACE, ananas, tomate.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Canette</span><span class="mi-dots"></span><span class="mi-price">3,50 €</span></div><p class="mi-desc">Coca, Coca Zéro, Coca Cherry, Orangina, Ice Tea, Oasis, Schweppes Tonic, Perrier.</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Red Bull</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>Également à emporter</span></div>
+        </div>
+      </article>
+      <article class="slate wide" id="s-chaudes" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><svg class="steam steam-sm" viewBox="0 0 60 70" aria-hidden="true"><path d="M18 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M30 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M42 64c-7-9 7-14 0-25s7-15 2-27"/></svg><h3>Nos boissons chaudes</h3><span class="menu-card-index">11 / 14</span></div>
+          <p class="menu-card-desc">Servies dès l'ouverture, à 8h en saison d'hiver, avant la première benne.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Expresso</span><span class="mi-dots"></span><span class="mi-price">2,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Noisette</span><span class="mi-dots"></span><span class="mi-price">2,20 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Café allongé</span><span class="mi-dots"></span><span class="mi-price">2,50 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Double expresso</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Grand crème</span><span class="mi-dots"></span><span class="mi-price">4,50 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Chocolat chaud</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Chocolat viennois</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Café viennois</span><span class="mi-dots"></span><span class="mi-price">5,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Green chaud ou choco rhum</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div><p class="mi-note">Contient de l'alcool, réservé aux adultes</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Vin chaud maison</span><span class="mi-dots"></span><span class="mi-price">6,00 €</span></div><p class="mi-note">Contient de l'alcool, réservé aux adultes</p></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Thé et infusion</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span></div>
+        </div>
+      </article>
+      <article class="slate wide" id="s-bieres" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos bières</h3><span class="menu-card-index">12 / 14</span></div>
+          <p class="menu-card-desc">Prix indiqués pour 25 cl puis 50 cl.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Bud, 5°</span><span class="mi-dots"></span><span class="mi-price">4,00 € / 8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Goose IPA, 5,9°</span><span class="mi-dots"></span><span class="mi-price">5,00 € / 9,50 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Bière du moment</span><span class="mi-dots"></span><span class="mi-price">4,50 € / 9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Panaché</span><span class="mi-dots"></span><span class="mi-price">4,00 € / 8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Monaco</span><span class="mi-dots"></span><span class="mi-price">4,50 € / 9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Picon</span><span class="mi-dots"></span><span class="mi-price">4,50 € / 9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Bière et sirop</span><span class="mi-dots"></span><span class="mi-price">4,50 € / 9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Vins</span><span class="mi-dots"></span><span class="mi-price">carte des vins</span></div><p class="mi-desc">Au verre, au pichet ou à la bouteille. Carte disponible en salle.</p></li>
+          </ul>
+          <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span><span>Vente interdite aux mineurs</span></div>
+        </div>
+      </article>
+      <article class="slate" id="s-cocktails" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Nos cocktails et apéritifs</h3><span class="menu-card-index">13 / 14</span></div>
+          <p class="menu-card-desc">Pour l'après-ski, en terrasse quand le soleil donne.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Aperol Spritz</span><span class="mi-dots"></span><span class="mi-price">9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Gin tonic</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Ricard</span><span class="mi-dots"></span><span class="mi-price">3,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Kir cassis ou châtaigne</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Suze</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Martini blanc</span><span class="mi-dots"></span><span class="mi-price">4,00 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span><span>Vente interdite aux mineurs</span></div>
+        </div>
+      </article>
+      <article class="slate wide" id="s-digestifs" data-slate>
+        <div class="menu-card">
+          <div class="menu-card-head"><h3>Digestifs</h3><span class="menu-card-index">14 / 14</span></div>
+          <p class="menu-card-desc">Servis en 4 cl.</p>
+          <ul class="menu-list">
+            <li class="mi"><div class="mi-top"><span class="mi-name">Get 27</span><span class="mi-dots"></span><span class="mi-price">6,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Bailey's</span><span class="mi-dots"></span><span class="mi-price">6,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Ballantine's</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Rhum arrangé</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Botran 15 ans</span><span class="mi-dots"></span><span class="mi-price">9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Génépi</span><span class="mi-dots"></span><span class="mi-price">8,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Chartreuse verte</span><span class="mi-dots"></span><span class="mi-price">9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Vodka soda</span><span class="mi-dots"></span><span class="mi-price">9,00 €</span></div></li>
+            <li class="mi"><div class="mi-top"><span class="mi-name">Whisky soda</span><span class="mi-dots"></span><span class="mi-price">9,00 €</span></div></li>
+          </ul>
+          <div class="menu-foot"><span>L'abus d'alcool est dangereux pour la santé</span><span>Vente interdite aux mineurs</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="wrap"><div class="hs-prog" data-hs-prog role="group" aria-label="Aller à une catégorie"></div></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <p class="menu-legal">La carte des allergènes est disponible au bar. Les prix sont affichés en euros, service compris. La carte évolue avec la saison et les arrivages, les nouveautés sont annoncées sur <a href="{{instagram}}" rel="noopener" target="_blank" style="color:var(--accent)">Instagram</a>.</p>
+</div>
+
+<div class="marquee marquee-big" aria-hidden="true">
+  <div class="marquee-row" data-loop>
+    <span>Fondue de chocolat maison</span><span>Génépi</span><span>Vin chaud</span><span>Tarte myrtilles</span><span>Nougat glacé</span><span>Aperol Spritz</span><span>Panini poulet</span><span>Entrecôte maturée</span>
+  </div>
+</div>
+
+</div>
+
+<!-- ============================== 16:00 · L'APRÈS-SKI ============================== -->
+<div class="chapter" data-tod="apres" data-from="16:00" data-to="18:45" data-label="L'après-ski">
+
+<section class="section chap" aria-labelledby="t-apres">
+  <div class="wrap">
+    <header class="chap-head">
+      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>16:00</span></p>
+      <p class="eyebrow rv">L'après-ski</p>
+      <h2 id="t-apres" class="rv-lines"><span class="ln"><span>Le goûter,</span></span><span class="ln"><span>puis l'après-ski.</span></span></h2>
+      <p class="lead rv rv-1">Les crêpes de seize heures, le vin chaud maison, et l'Aperol en terrasse quand le soleil donne.</p>
+    </header>
+
+    <div class="trio">
+      <article class="treat rv" data-spot>
+        <span class="treat-time">16h</span>
+        <h3>Crêpe Nutella</h3>
+        <p>Le goûter, sur place ou à emporter.</p>
+        <b class="treat-price">5,00 €</b>
+      </article>
+      <article class="treat rv rv-1" data-spot>
+        <span class="treat-time">17h</span>
+        <h3>Vin chaud maison</h3>
+        <p>Pour se réchauffer les mains en sortant des pistes.</p>
+        <b class="treat-price">6,00 €</b>
+        <svg class="steam" viewBox="0 0 60 70" aria-hidden="true"><path d="M18 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M30 64c-7-9 7-14 0-25s7-15 2-27"/><path d="M42 64c-7-9 7-14 0-25s7-15 2-27"/></svg>
+      </article>
+      <article class="treat rv rv-2" data-spot>
+        <span class="treat-time">18h</span>
+        <h3>Aperol Spritz</h3>
+        <p>En terrasse, face aux pistes.</p>
+        <b class="treat-price">9,00 €</b>
+      </article>
+    </div>
+    <p class="treat-legal">L'abus d'alcool est dangereux pour la santé. Vin chaud et Aperol réservés aux adultes.</p>
+  </div>
+</section>
+
+<section class="section privat" aria-label="Privatisation et événements">
+  <div class="wrap">
+    <div class="privat-in">
+      <p class="eyebrow rv">Événements & groupes</p>
+      <h2 class="rv-lines privat-title">
+        <span class="ln"><span>Privatisez le</span></span>
+        <span class="ln"><span>restaurant et le bar.</span></span>
+      </h2>
+      <p class="lead rv rv-1">Soirée complète, repas, séminaire d'entreprise, anniversaire, ou simplement boire un verre entre vous. Une formule sur-mesure : repas assis, buffet et planches, ou soirée entre proches.</p>
+      <div class="btn-row rv rv-2" style="margin-top:28px">
+        <a class="btn btn-primary btn-lg" data-magnetic href="tel:{{phone_tel}}">Appeler pour privatiser<span class="sr-only"> le {{phone_display}}</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============================== 19:00 · LE SOIR ============================== -->
+<div class="chapter" data-tod="soir" data-from="19:00" data-to="22:00" data-label="Le soir">
+
+<section class="section chap" id="horaires" aria-labelledby="t-horaires">
+  <div class="wrap">
+    <header class="chap-head">
+      <p class="chap-time" aria-hidden="true"><span class="odo" data-odo>19:00</span></p>
+      <p class="eyebrow rv">Le soir · Horaires</p>
+      <h2 id="t-horaires" class="rv-lines"><span class="ln"><span>Se retrouver</span></span><span class="ln"><span>autour d'un verre.</span></span></h2>
+      <p class="lead rv rv-1">Trois saisons, trois rythmes. Le cadran est à l'heure : il montre si l'on est ouverts en ce moment. Survolez une saison pour voir ses horaires.</p>
+      <svg class="ridge" data-draw viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 100 L80 82 L140 90 L210 52 L260 66 L330 30 L380 50 L430 40 L520 72 L600 58 L660 18 L720 46 L790 38 L860 70 L930 54 L1000 76 L1080 60 L1200 88"/></svg>
+    </header>
+
+    <div class="clock-grid">
+      <figure class="dial rv" data-dial>
+        <svg viewBox="0 0 200 200" role="img" aria-labelledby="dial-t">
+          <title id="dial-t">Cadran des horaires d'ouverture sur 24 heures</title>
+          <circle class="dial-track" cx="100" cy="100" r="86"/>
+          <g class="dial-ticks" data-dial-ticks></g>
+          <path class="dial-preview" data-dial-preview d=""/>
+          <path class="dial-arc" data-dial-arc d="" pathLength="1"/>
+          <text class="dial-h" x="100" y="-4">0h</text><text class="dial-h" x="207" y="100">6h</text>
+          <text class="dial-h" x="100" y="205">12h</text><text class="dial-h" x="-7" y="100">18h</text>
+          <g class="dial-needle" data-dial-needle><line x1="100" y1="2" x2="100" y2="30"/><circle cx="100" cy="14" r="4.5"/></g>
+        </svg>
+        <figcaption class="dial-c">
+          <b data-dial-state>Horaires</b>
+          <span data-dial-sub>en cours de chargement</span>
+        </figcaption>
+      </figure>
+
+      <div class="hours">
+        <!-- shortcut: heures recopiées de SEASONS (main.js), à garder synchronisées -->
+        <article class="season rv" data-season="hiver" data-open="07:30" data-close="22:00" tabindex="0">
+          <h3>Saison d'hiver <span class="now" data-season-now hidden>En ce moment</span></h3>
+          <p class="dates">De fin novembre à mi-avril</p>
+          <dl><dt>7 jours sur 7</dt><dd>7h30 à 22h</dd></dl>
+          <p class="note">Café et petit-déjeuner dès 7h30, avant la première benne.</p>
+        </article>
+        <article class="season rv rv-1" data-season="ete" data-open="08:30" data-close="18:00" tabindex="0">
+          <h3>Saison d'été <span class="now" data-season-now hidden>En ce moment</span></h3>
+          <p class="dates">De fin juin à fin août</p>
+          <dl><dt>7 jours sur 7</dt><dd>8h30 à 18h</dd></dl>
+          <p class="note">Randonnée, bike park, terrasse et pétanque.</p>
+        </article>
+        <article class="season rv rv-2" data-season="hors" tabindex="0">
+          <h3>Hors saison <span class="now" data-season-now hidden>En ce moment</span></h3>
+          <p class="dates">Entre les deux saisons</p>
+          <dl><dt>Fermé</dt><dd>Réouverture au début de la saison</dd></dl>
+          <p class="note">Restaurant fermé en dehors des saisons hiver et été.</p>
+        </article>
+        <div class="btn-row rv rv-2">
+          <a class="btn btn-primary" data-magnetic href="tel:{{phone_tel}}">Appeler le {{phone_display}}</a>
+          <a class="btn btn-ghost" href="{{instagram}}" rel="noopener" target="_blank">Ouvertures du jour sur Instagram<span class="sr-only"> (nouvelle fenêtre)</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="avis" aria-labelledby="t-avis">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow rv">Avis</p>
+      <h2 id="t-avis" class="rv-lines"><span class="ln"><span>Ce qu'en disent</span></span><span class="ln"><span>les clients.</span></span></h2>
+      <p class="lead rv rv-1">Extraits d'avis publiés sur Google, cités tels quels. L'ensemble des avis et des notes reste consultable sur la fiche du restaurant.</p>
+    </div>
+    <div class="tcols rv rv-1" role="region" aria-label="Avis clients, défilement automatique">
+      <div class="tcol"><div class="tcol-inner" style="--dur:44s" data-loop>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Excellent ! On est tombé dessus par hasard le premier jour, et au final nous y avons mangé tous les midis ! Bon, pas cher, rapide et sympa ! »</p><footer><span class="tavatar" aria-hidden="true">GP</span><span><cite>Gaëtan P.</cite><span class="trole">Avis Google · visite en janvier</span></span></footer></blockquote></article>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« On a testé les burgers, ils étaient vraiment très bons et savoureux. Le dessert, une tarte à la myrtille maison, était excellent. »</p><footer><span class="tavatar" aria-hidden="true">PP</span><span><cite>Prasanna P.</cite><span class="trole">Avis Google · visite en février</span></span></footer></blockquote></article>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Serveurs et serveuses agréables. Patron à l'écoute, boissons et collation impeccables, ambiance parfaite pour se poser en bas des pistes. »</p><footer><span class="tavatar" aria-hidden="true">RC</span><span><cite>Romain C.</cite><span class="trole">Avis Google · visite en décembre</span></span></footer></blockquote></article>
+      </div></div>
+      <div class="tcol"><div class="tcol-inner" style="--dur:56s" data-loop>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Une pause parfaite au pied des télécabines lors de cette journée bike park. Une serveuse vraiment accueillante, un tartare au couteau parfaitement préparé. »</p><footer><span class="tavatar" aria-hidden="true">HC</span><span><cite>Hugo C.</cite><span class="trole">Avis Google · visite en juillet</span></span></footer></blockquote></article>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Top, accueil sympa, chaleureux, nous en avons tout de suite fait notre refuge, la cuisine y est très bonne et pour des tarifs plus que raisonnables. »</p><footer><span class="tavatar" aria-hidden="true">PL</span><span><cite>Pierre L.</cite><span class="trole">Avis Google · visite en décembre</span></span></footer></blockquote></article>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Parfait après le ski pour reprendre des forces. Accueil parfait ! Mention spéciale à la serveuse très sympathique ! »</p><footer><span class="tavatar" aria-hidden="true">RB</span><span><cite>Romain B.</cite><span class="trole">Avis Google · visite en janvier</span></span></footer></blockquote></article>
+      </div></div>
+      <div class="tcol"><div class="tcol-inner" style="--dur:50s" data-loop>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Bon accueil, serveuse très sympathique, prix correct, bonne nourriture, je conseille vivement. »</p><footer><span class="tavatar" aria-hidden="true">JG</span><span><cite>Judith G.</cite><span class="trole">Avis Google · visite en juillet</span></span></footer></blockquote></article>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Un bon petit snack à faire après une bonne descente de ski avec la serveuse Tania vraiment très aimable ! Je recommande ! »</p><footer><span class="tavatar" aria-hidden="true">AP</span><span><cite>Alexis P.</cite><span class="trole">Avis Google · visite en janvier</span></span></footer></blockquote></article>
+        <article class="tcard"><blockquote><div class="tstars" aria-label="5 sur 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7.1L12 18l-6.2 3.4 1.4-7.1L2 9.4l7-.8Z" fill="currentColor"/></svg></div><p>« Excellents plats et service au top ! Il y a même un terrain de pétanque devant ! »</p><footer><span class="tavatar" aria-hidden="true">AG</span><span><cite>Amélie G.</cite><span class="trole">Avis Google · visite en juillet</span></span></footer></blockquote></article>
+      </div></div>
+    </div>
+    <div class="btn-row rv" style="margin-top:34px">
+      <a class="btn btn-ghost" href="{{maps_place}}" rel="noopener" target="_blank">Lire tous les avis sur Google<span class="sr-only"> (nouvelle fenêtre)</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="t-faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow rv">Questions fréquentes</p>
+      <h2 id="t-faq" class="rv-lines"><span class="ln"><span>Avant de venir.</span></span></h2>
+    </div>
+    <div class="faq rv rv-1" data-faq>
+      <p class="faq-time">Réponses mises à jour pour la saison en cours</p>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-1" id="fq-1">
+          <span class="faq-bubble">Où se trouve exactement le Gravity 1650 ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-1" role="region" aria-labelledby="fq-1"><div class="faq-a-inner"><p>Au 128 place de Belledonne, à Chamrousse 1650 (Recoin). À 50 mètres des pistes et du départ de la télécabine, juste à côté de l'office de tourisme.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-2" id="fq-2">
+          <span class="faq-bubble">Faut-il réserver ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-2" role="region" aria-labelledby="fq-2"><div class="faq-a-inner"><p>Pas besoin de réserver ! Présentez-vous directement au restaurant, nous vous accueillons sur place.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-3" id="fq-3">
+          <span class="faq-bubble">Quels moyens de paiement acceptez-vous ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-3" role="region" aria-labelledby="fq-3"><div class="faq-a-inner"><p>Paiement sur place par carte bancaire, espèces et carte Ticket Restaurant.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-4" id="fq-4">
+          <span class="faq-bubble">Y a-t-il un menu enfant ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-4" role="region" aria-labelledby="fq-4"><div class="faq-a-inner"><p>Oui, à 13,90 € pour les moins de 12 ans : sirop à l'eau au choix, steak haché frites ou poulet croustillant frites, et une boule de glace.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-5" id="fq-5">
+          <span class="faq-bubble">Où trouver la liste des allergènes ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-5" role="region" aria-labelledby="fq-5"><div class="faq-a-inner"><p>La carte des allergènes est disponible au bar. Signalez-nous toute allergie au moment de la commande.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-6" id="fq-6">
+          <span class="faq-bubble">Peut-on venir avec son chien ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-6" role="region" aria-labelledby="fq-6"><div class="faq-a-inner"><p>Oui, les animaux sont acceptés, en salle comme en terrasse.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-7" id="fq-7">
+          <span class="faq-bubble">Proposez-vous de la vente à emporter ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-7" role="region" aria-labelledby="fq-7"><div class="faq-a-inner"><p>Oui. Burgers, paninis, crêpes, glaces et boissons se prennent aussi à emporter pour repartir vite sur les pistes ou les sentiers.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-8" id="fq-8">
+          <span class="faq-bubble">Accueillez-vous les groupes ou les séminaires ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-8" role="region" aria-labelledby="fq-8"><div class="faq-a-inner"><p>Oui ! Privatisez entièrement le restaurant et le bar pour vos événements d'entreprise, séminaires ou soirées privées. Une formule sur-mesure adaptée à vos envies : repas assis, buffet et planches, ou soirée complète entre proches. Contactez-nous par téléphone au {{phone_display}} pour étudier votre projet.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa-9" id="fq-9">
+          <span class="faq-bubble">Peut-on privatiser le bar pour une soirée entre amis ?</span><span class="faq-sign" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa-9" role="region" aria-labelledby="fq-9"><div class="faq-a-inner"><p>Absolument ! Privatisez entièrement le restaurant et le bar pour vos événements (soirée complète, repas, séminaire d'entreprise, anniversaire, ou simplement boire un verre entre vous). Une formule sur-mesure adaptée à vos envies. Appelez le {{phone_display}} pour étudier votre projet.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="acces" aria-labelledby="t-acces">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow rv">Accès</p>
+      <h2 id="t-acces" class="rv-lines"><span class="ln"><span>128 place de Belledonne,</span></span><span class="ln"><span>Chamrousse 1650.</span></span></h2>
+    </div>
+    <div class="access rv rv-1">
+      <div class="map" id="carte-acces" data-lat="{{lat}}" data-lng="{{lng}}"
+           role="application" aria-label="Carte de localisation du Gravity 1650, 128 place de Belledonne à Chamrousse"></div>
+      <div class="access-body">
+        <address>
+          <b>Gravity 1650</b><br>
+          {{address_street}}<br>
+          {{address_locality}}<br>
+          {{postal}} Chamrousse, Isère
+        </address>
+        <ul class="access-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m4 18 7-11 4 6 2-3 3 8Z"/></svg><span>À 50 mètres des pistes et du départ de la télécabine de la Croix de Chamrousse.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg><span>Sur la place de Belledonne, à côté de l'office de tourisme.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M7 20h2M15 20h2M4 11h16"/></svg><span>Arrêt de bus Chamrousse 1650 et parkings de la station à quelques pas.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Depuis Grenoble, environ 30 km par Uriage et la route de Chamrousse.</span></li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="{{maps_dir}}" rel="noopener" target="_blank">Itinéraire<span class="sr-only"> (Google Maps, nouvelle fenêtre)</span></a>
+        </div>
+        <p class="muted" style="margin:0;font-size:.88rem">Fond de carte OpenStreetMap. Paiement sur place par carte bancaire, espèces et carte Ticket Restaurant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
