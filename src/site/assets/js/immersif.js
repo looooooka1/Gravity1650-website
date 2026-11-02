@@ -119,9 +119,39 @@
   }
 
   /* ------------- après-ski : les forfaits pendus se balancent au défilement */
+  /* épingle fixée au site + élastique jusqu'au trou du forfait (pivot à 56 px au-dessus, trou à 16 px sous le haut) */
+  function initPins(els) {
+    var NS = 'http://www.w3.org/2000/svg', box = els[0].parentNode, svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'pass-strings'); svg.setAttribute('aria-hidden', 'true');
+    box.insertBefore(svg, box.firstChild);
+    var items = els.map(function (el) {
+      var pin = document.createElement('i'), line = document.createElementNS(NS, 'line');
+      pin.className = 'pass-pin'; pin.setAttribute('aria-hidden', 'true');
+      box.appendChild(pin); svg.appendChild(line);
+      return { el: el, pin: pin, line: line, r: parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0 };
+    });
+    return function draw(st) {
+      items.forEach(function (o, i) {
+        var s = st ? st[i] : { x: 0, y: 0, a: 0 };
+        var px = o.el.offsetLeft + o.el.offsetWidth / 2, py = o.el.offsetTop - 56;
+        var th = (o.r + s.a) * Math.PI / 180;
+        var hx = px + s.x - 72 * Math.sin(th), hy = py + s.y + 72 * Math.cos(th);
+        var len = Math.hypot(hx - px, hy - py);
+        o.pin.style.transform = 'translate3d(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px,0)';
+        o.line.setAttribute('x1', px.toFixed(1)); o.line.setAttribute('y1', py.toFixed(1));
+        o.line.setAttribute('x2', hx.toFixed(1)); o.line.setAttribute('y2', hy.toFixed(1));
+        o.line.style.strokeWidth = clamp(2.6 * 72 / Math.max(1, len), 0.9, 2.6).toFixed(2); // l'élastique s'affine en s'étirant
+      });
+    };
+  }
+
   function initPasses() {
     var els = $all('[data-pass]');
-    if (!els.length || reduce) return null;
+    if (!els.length) return null;
+    var draw = initPins(els);
+    draw();
+    addEventListener('resize', function () { draw(); });
+    if (reduce) return null;
     var st = els.map(function (el, i) { return { el: el, a: 0, w: 0, f: [1, -0.8, 0.65][i % 3], x: 0, y: 0, vx: 0, vy: 0, held: null }; });
     var raf = 0, live = false;
     function step() {
@@ -140,6 +170,7 @@
         o.el.style.setProperty('--x', o.x.toFixed(1) + 'px');
         o.el.style.setProperty('--y', o.y.toFixed(1) + 'px');
       });
+      draw(st);
       if (moving && (live || st.some(function (o) { return o.held; }))) raf = requestAnimationFrame(step);
     }
     function kick() { if (!raf) raf = requestAnimationFrame(step); }
@@ -204,6 +235,7 @@
     var cable = document.querySelector('[data-cable]');
     var gondola = document.querySelector('[data-gondola]');
     var fog = document.querySelector('[data-fog]');
+    var dawn = document.querySelector('.chap-matin');
     var sunSect = document.querySelector('[data-sun]');
     var sun = document.querySelector('[data-sun-disc]');
     var lastY = window.scrollY, ticking = false, tod = '', shown = '', label = '';
@@ -221,6 +253,7 @@
       var gr = cable ? cable.getBoundingClientRect() : null;
       var gw = gondola ? gondola.offsetWidth : 0;
       var fr = fog ? fog.getBoundingClientRect() : null;
+      var dr = dawn ? dawn.getBoundingClientRect() : null;
       var ur = sunSect ? sunSect.getBoundingClientRect() : null;
 
       vel += ((y - lastY) - vel) * 0.18;
@@ -253,6 +286,8 @@
         });
         var sk = clamp(-vel * 0.12, -6, 6).toFixed(2);
         marquees.forEach(function (el) { el.style.transform = sk === '0.00' ? '' : 'skewX(' + sk + 'deg)'; });
+
+        if (dr && dr.bottom > 0 && dr.top < vh) dawn.style.setProperty('--dawn', clamp((vh - dr.top) / (vh + dr.height * 0.6), 0, 1).toFixed(3));
 
         // matin : la cabine monte le long du câble, la brume se lève sur le titre
         if (gr && gr.bottom > 0 && gr.top < vh) {

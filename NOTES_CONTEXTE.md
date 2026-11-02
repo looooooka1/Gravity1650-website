@@ -23,3 +23,6 @@ Chiffres en grand (50, 7h30, 70, 25) + sous-titres. Télécabine redessinée san
 
 ## 2026-11-02 · Page test immersive, v4
 Cabine rouge Chamrousse (logo sur les 2 faces, n°55). Carte toujours en français à l arrivée (plus de mémoire de langue). Néon 19:00 plus lumineux. Saisons : rideau qui se retire + contenu en cascade. Thème clair : soir bleu crépuscule (#B9BFD3).
+
+## 2026-11-02 · Page test immersive, v5
+Cabine 3/4 en vraie perspective (point de fuite à droite), sans n°55. Forfaits : épingle fixe + élastique (SVG, s affine en s étirant). Halo néon sans bord (overflow-x:clip). Thème sombre par défaut (theme.js). Hero 175vh (160vh mobile), sans backdrop-filter. Matin : lever de soleil lié au défilement (--dawn).
