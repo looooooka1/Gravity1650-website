@@ -15,7 +15,7 @@ Sorties : format paysage (desktop) et recadrage portrait (mobile).
 """
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 SRC = Path.home() / "Downloads" / "Generated Image September 09, 2026 - 2_02PM.jpg"
 OUT = Path(__file__).resolve().parent.parent / "src" / "site" / "assets" / "img"
@@ -99,35 +99,22 @@ EXT = 2.0   # le plan avant est prolonge vers le bas pour ne jamais laisser de v
 
 
 def extend_front(front):
-    """Prolonge la neige sous la photo par miroirs successifs, puis floute.
+    """Prolonge la neige sous la photo par un aplat de sa couleur moyenne.
 
-    Un premier plan aussi proche serait hors profondeur de champ : le flou est
-    photographiquement juste et masque entierement la repetition."""
+    Le bas de la photo se fond dans l'aplat : aucune trainee ni bande floue."""
     w, h = front.size
     tail = round(h * (EXT - 1))
-    block = front.crop((0, round(h * 0.55), w, h)).convert("RGB")
-    bh = block.height
-
-    ext = Image.new("RGB", (w, tail))
-    y, flip = 0, True
-    while y < tail:
-        tile = block.transpose(Image.FLIP_TOP_BOTTOM) if flip else block
-        ext.paste(tile, (0, y))
-        y += bh
-        flip = not flip
-
-    ext = ext.filter(ImageFilter.GaussianBlur(w / 52.0))
-
-    # la neige s'enfonce doucement dans l'ombre en descendant
-    shade = Image.new("L", (1, tail))
-    for i in range(tail):
-        shade.putpixel((0, i), int(255 - 120 * (i / max(1, tail - 1)) ** 1.15))
-    ext = Image.composite(ext, Image.new("RGB", (w, tail), (0, 0, 0)), shade.resize((w, tail)))
+    fade = round(h * 0.08)
+    color = front.crop((0, h - round(h * 0.04), w, h)).convert("RGB").resize((1, 1), Image.BOX).getpixel((0, 0))
 
     out = Image.new("RGBA", (w, h + tail), (0, 0, 0, 0))
-    ext_rgba = ext.convert("RGBA")
-    out.paste(ext_rgba, (0, h))
-    out.paste(front, (0, 0), front)
+    out.paste(color + (255,), (0, h - fade, w, h + tail))
+    ramp = Image.linear_gradient("L").rotate(180).resize((w, fade))  # 255 en haut -> 0 en bas
+    alpha = front.getchannel("A")
+    alpha.paste(ImageChops.multiply(alpha.crop((0, h - fade, w, h)), ramp), (0, h - fade))
+    faded = front.copy()
+    faded.putalpha(alpha)
+    out.alpha_composite(faded)
     return out
 
 
