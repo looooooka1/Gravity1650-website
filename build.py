@@ -16,6 +16,7 @@ The rest of the file is the page body. Partials live in src/<site>/partials/
 page meta, merged over the site defaults in src/<site>/site.json.
 No dependencies beyond the Python 3 standard library.
 """
+import hashlib
 import json
 import re
 import shutil
@@ -129,6 +130,12 @@ def build_site(site: str):
         )
         # final pass for tokens introduced by partials of partials
         html = render(html, ctx)
+        # ?v=<hash> sur CSS/JS : cache navigateur d'un an sans servir une vieille version
+        html = re.sub(
+            r'((?:href|src)="/assets/([^"?]+\.(?:css|js)))"',
+            lambda m: f'{m.group(1)}?v={hashlib.sha256((out / "assets" / m.group(2)).read_bytes()).hexdigest()[:10]}"',
+            html,
+        )
         target = out / page_file.name
         target.write_text(html, encoding="utf-8")
         if "noindex" not in ctx["robots"]:

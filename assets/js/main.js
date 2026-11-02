@@ -4,7 +4,6 @@
   'use strict';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CFG = window.SITE_CONFIG || {};
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
 
@@ -354,7 +353,13 @@
     var frame = initScroll();
     initMenu();
     initFaq();
-    initMap();
+    var carte = document.getElementById('carte-acces');
+    if (carte && 'IntersectionObserver' in window) {
+      var mo = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { mo.disconnect(); initMap(); }
+      }, { rootMargin: '400px' });
+      mo.observe(carte);
+    } else { initMap(); }
     initLenis(frame);
   });
 })();

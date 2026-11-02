@@ -1,0 +1,12 @@
+# Seul le site généré est publié : ni sources, ni outils, ni brouillons.
+src
+tools
+work
+terrasse
+screenshots
+IMG
+build.py
+netlify.toml
+_headers
+*.md
+__pycache__
