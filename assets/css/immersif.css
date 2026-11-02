@@ -60,9 +60,9 @@
 
 /* le logo se lève lettre par lettre quand le rideau s'ouvre */
 .wordmark .w-main{white-space:nowrap}
-.wordmark .ch{display:inline-block;opacity:0;transform:translate3d(0,.32em,0) rotate(4deg);filter:blur(6px);
+.js .wordmark .ch{display:inline-block;opacity:0;transform:translate3d(0,.32em,0) rotate(4deg);filter:blur(6px);
   transition:opacity .9s var(--ease),transform 1.3s var(--ease),filter 1s var(--ease);transition-delay:calc(var(--i) * 55ms)}
-.wordmark .w-sub{opacity:0;transform:translate3d(0,.4em,0);transition:opacity 1s var(--ease) .45s,transform 1.3s var(--ease) .45s}
+.js .wordmark .w-sub{opacity:0;transform:translate3d(0,.4em,0);transition:opacity 1s var(--ease) .45s,transform 1.3s var(--ease) .45s}
 .is-ready .wordmark .ch,.is-ready .wordmark .w-sub{opacity:1;transform:none;filter:none}
 
 /* neige : devant la montagne, derrière l'interface */
@@ -309,7 +309,7 @@
 .page-day .hours .season.rv-1{--d:.16s}.page-day .hours .season.rv-2{--d:.32s}
 .page-day .hours .season.rv{opacity:1;transform:translate3d(0,48px,0)}
 .page-day .hours .season.rv.is-in{transform:none}
-.page-day .hours .season>*{opacity:0;transform:translate3d(0,14px,0);transition:opacity .8s var(--ease),transform .9s var(--ease)}
+.js .page-day .hours .season>*{opacity:0;transform:translate3d(0,14px,0);transition:opacity .8s var(--ease),transform .9s var(--ease)}
 .page-day .hours .season.is-in>*{opacity:1;transform:none}
 .page-day .hours .season.is-in>:nth-child(1){transition-delay:calc(var(--d) + .45s)}
 .page-day .hours .season.is-in>:nth-child(2){transition-delay:calc(var(--d) + .55s)}
@@ -336,7 +336,7 @@
   .sun{transform:none}
   .stamp{opacity:.92;scale:1;filter:none;transition:none}
   .garland i,.glow-title{transition:none}
-  .page-day .hours .season.rv,.page-day .hours .season>*{transform:none;opacity:1;transition:none}.page-day .hours .season::after{display:none}
+  .page-day .hours .season.rv,.js .page-day .hours .season>*{transform:none;opacity:1;transition:none}.page-day .hours .season::after{display:none}
   .is-on .garland i,.is-on .neon::after,.is-on .neon::before{animation:none;opacity:1}
   [data-carte] .section-head,[data-carte] .menu-tab,[data-carte] .menu-card{transition:none}
   .dayrail *{transition:none!important}

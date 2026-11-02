@@ -4,7 +4,7 @@
 - Domaine cible : https://www.gravity1650.fr (GoDaddy, DNS domaincontrol.com). EN LIGNE le 2026-11-02 : apex 308 vers www, HTTPS, headers OK, sources en 404.
 - Sécurité : `vercel.json` (CSP sans script inline, HSTS, cache), `.vercelignore` (sources non publiées).
 - 2026-11-02 : commits locaux ee9cc6f non poussés (jeton GitHub invalide).
-- Vercel : compte client montotomatis@gmail.com, team Gravity1650 (Hobby, passer Pro car usage commercial), projet gravity1650, repo looooooka1/Gravity1650-website (main).
+- Vercel : compte du client, team Gravity1650 (Hobby, passer Pro car usage commercial), projet gravity1650, repo looooooka1/Gravity1650-website (main).
 - DNS GoDaddy : A @ 216.198.79.1, CNAME www 41ff96fee3b5c8d9.vercel-dns-017.com, garder _dmarc et _domainconnect.
 - Reste : 6 champs des mentions légales, Search Console (sitemap.xml), fiche Google Business, option hstspreload.org, supprimer l'ancien projet Vercel gravity1650-website.
 
@@ -34,3 +34,11 @@ Cabine 3/4 en vraie perspective (point de fuite à droite), sans n°55. Forfaits
 - OK : en-têtes sécurité, HTTPS/HSTS, aucun secret, aucun XSS, CSS/JS versionnés (?v=hash), 0 erreur console, liens valides, a11y contrastes AA. Lighthouse / : mobile 82, desktop 100.
 - Code à faire : .rv visible sans JS ; tableau légal déborde à 375px ; preload hero desktop chargé sur mobile ; cookies/confidentialité mentionnent GA inexistant + bouton consentement mort + Apple Plans ; llms.txt contredit horaires/réservation/carte ; doublon téléphone mentions légales ; aria nav-toggle ; Leaflet en lazy ; CSP style-src-attr.
 - Propriétaire : mentions légales (forme, capital, SIREN, TVA, directeur publication) ; dépôt GitHub en privé (NOTES contient email client) ; Vercel Pro (usage commercial) ; DNS SPF -all + MX nul ; valider horaires/réservation/paiement ; fiche Google + Search Console.
+
+## 2026-11-02 · Bascule accueil immersif + SEO/GEO
+- La page immersive est devenue `src/site/pages/index.html` (ancien accueil supprimé, reste dans l'historique git). Redirection 301 /test-immersif.html → / (vercel.json).
+- Title « Snack, bar et restaurant à Chamrousse 1650 | Gravity 1650 », H1 complété en sr-only, FAQ réécrite (9 questions = JSON-LD FAQPage), JSON-LD Restaurant+BarOrPub (acceptsReservations false).
+- Faits validés : réservation uniquement pour privatiser ; paiement sur place CB, espèces, carte Ticket Restaurant (aucun chèque).
+- À faire chaque année : dates validFrom/validThrough du JSON-LD (META de index.html) + SEASONS (main.js) + llms.txt.
+- Correctifs : contenu visible sans JS (classe .js posée par theme.js), tableaux légaux défilables, préchargement hero par taille d'écran, Leaflet chargé à l'approche de la carte, pages cookies/confidentialité sans GA, CSP style-src 'self' + style-src-attr.
+- Dépôt : captures, brouillons (work/, screenshots/) et anciennes variantes (terrasse, piste) retirés du suivi git, gardés en local (.gitignore). Email client retiré des notes (reste dans l'ancien historique git).

@@ -1,3 +1,11 @@
 .DS_Store
 __pycache__/
 *.pyc
+# Brouillons, captures et anciennes variantes : gardés en local, hors dépôt
+/screenshots/
+/work/
+/terrasse/
+/src/terrasse/
+/src/piste/
+/IMG/
+/.claude/

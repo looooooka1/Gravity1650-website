@@ -1,4 +1,5 @@
 /* Thème avant le premier rendu (fichier externe : CSP sans unsafe-inline). */
+document.documentElement.classList.add('js'); // les animations d'apparition ne masquent le contenu que si JS tourne
 (function(){try{var t=localStorage.getItem('g1650-theme');
 if(t!=='light')t='dark'; // sombre d'office, le clair seulement si le visiteur l'a choisi
 document.documentElement.setAttribute('data-theme',t);

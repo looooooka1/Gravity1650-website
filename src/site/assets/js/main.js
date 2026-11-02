@@ -327,6 +327,17 @@
   }
 
   /* ----------------------------------------------------------------- carte */
+  // Leaflet (~150 Ko) n'est téléchargé qu'à l'approche de la carte
+  function loadLeaflet(done) {
+    if (typeof window.L !== 'undefined') return done();
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = '/assets/vendor/leaflet.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = '/assets/vendor/leaflet.js'; js.onload = done;
+    document.head.appendChild(js);
+  }
+
   function initMap() {
     var el = document.getElementById('carte-acces');
     if (!el || typeof window.L === 'undefined') return;
@@ -369,10 +380,10 @@
     var carte = document.getElementById('carte-acces');
     if (carte && 'IntersectionObserver' in window) {
       var mo = new IntersectionObserver(function (e) {
-        if (e[0].isIntersecting) { mo.disconnect(); initMap(); }
+        if (e[0].isIntersecting) { mo.disconnect(); loadLeaflet(initMap); }
       }, { rootMargin: '400px' });
       mo.observe(carte);
-    } else { initMap(); }
+    } else if (carte) { loadLeaflet(initMap); }
     initLenis(frame);
   });
 })();
