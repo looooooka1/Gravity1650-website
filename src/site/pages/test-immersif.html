@@ -97,10 +97,10 @@
 <section class="section-sm" aria-label="Informations clés">
   <div class="wrap">
     <div class="facts-grid">
-      <div class="fact rv"><b><span data-count="50">50</span> m</b><span>des pistes et du départ de la télécabine</span></div>
-      <div class="fact rv rv-1"><b>Dès 7h30</b><span>en saison d'hiver, 7 jours sur 7</span></div>
-      <div class="fact rv rv-2"><b><span data-count="70">70</span> places</b><span>en terrasse, sur la place de Belledonne</span></div>
-      <div class="fact rv rv-3"><b><span data-count="25">25</span> places</b><span>en salle, au cadre chaleureux</span></div>
+      <div class="fact rv"><b><span data-count="50">50</span></b><span>mètres des pistes et du départ de la télécabine</span></div>
+      <div class="fact rv rv-1"><b>7h30</b><span>ouverture en saison d'hiver, 7 jours sur 7</span></div>
+      <div class="fact rv rv-2"><b><span data-count="70">70</span></b><span>places en terrasse, sur la place de Belledonne</span></div>
+      <div class="fact rv rv-3"><b><span data-count="25">25</span></b><span>places en salle, au cadre chaleureux</span></div>
     </div>
   </div>
 </section>
@@ -109,7 +109,17 @@
   <div class="cable-band" data-cable>
   <svg class="cable" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="-2" y1="4" x2="102" y2="46"/></svg>
   <div class="gondola" aria-hidden="true" data-gondola>
-    <svg viewBox="0 0 120 150"><path class="g-arm" d="M60 0v34M44 34h32"/><rect class="g-body" x="14" y="40" width="92" height="96" rx="16"/><rect class="g-win" x="24" y="52" width="72" height="40" rx="7"/><text x="60" y="122">07:30</text></svg>
+    <svg viewBox="0 0 120 172">
+      <g class="g-grip"><rect x="38" y="-4" width="44" height="12" rx="4"/><circle cx="47" cy="0" r="5"/><circle cx="73" cy="0" r="5"/></g>
+      <path class="g-arm" d="M60 8v14c0 6-4 8-4 12v8"/>
+      <path class="g-roof" d="M30 50c4-8 16-11 30-11s26 3 30 11l4 6H26z"/>
+      <path class="g-body" d="M24 56h72l6 70c1 12-6 20-18 20H36c-12 0-19-8-18-20z"/>
+      <path class="g-win" d="M30 64h27v44H27zM63 64h27l3 44H63z"/>
+      <path class="g-shine" d="M34 70l-4 14M39 70l-6 22M68 70l-4 14M73 70l-6 22"/>
+      <path class="g-band" d="M21 114h78l1 9H20z"/>
+      <path class="g-line" d="M24 56h72l6 70c1 12-6 20-18 20H36c-12 0-19-8-18-20zM60 56v90M30 64h27v44H27zM63 64h27l3 44H63zM30 50c4-8 16-11 30-11s26 3 30 11l4 6H26z"/>
+      <path class="g-skis" d="M98 70l9-3v54l-9 2M101 72v48"/>
+    </svg>
   </div>
   </div>
   <div class="wrap">
@@ -493,7 +503,7 @@
   <div class="garland" aria-hidden="true" data-garland></div>
   <div class="wrap">
     <header class="chap-head">
-      <p class="neon" aria-hidden="true">19:00</p>
+      <p class="neon" aria-hidden="true" data-text="19:00">19:00</p>
       <p class="eyebrow rv">Le soir · Horaires</p>
       <h2 id="t-horaires" class="glow-title">Se retrouver autour d'un verre.</h2>
       <p class="lead rv rv-1">Trois saisons, trois rythmes. Le cadran est à l'heure : il montre si l'on est ouverts en ce moment. Survolez une saison pour voir ses horaires.</p>

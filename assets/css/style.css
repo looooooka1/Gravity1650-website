@@ -324,7 +324,7 @@ a.status:hover{transform:translateY(-2px);border-color:rgba(247,240,231,.5);back
 .fact:nth-child(2n){border-right:0}
 .fact:nth-last-child(-n+2){border-bottom:0}
 .fact b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.03em;color:var(--accent);line-height:1}
-.fact span{display:block;margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.4}
+.fact>span{display:block;margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.4}
 @media (min-width:820px){
   .facts-grid{grid-template-columns:repeat(4,1fr)}
   .fact{padding:34px 28px;border-bottom:0}

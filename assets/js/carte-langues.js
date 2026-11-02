@@ -195,7 +195,20 @@
       // la carte se voile, change de langue, puis se redévoile
       clearTimeout(timer);
       sect.classList.add('is-swapping');
-      timer = setTimeout(function () { apply(lang); sect.classList.remove('is-swapping'); }, 260);
+      timer = setTimeout(function () {
+        // hauteur figée puis animée : rien ne saute sous la carte quand les textes changent de longueur
+        var h0 = sect.offsetHeight;
+        sect.style.height = '';
+        apply(lang);
+        var h1 = sect.offsetHeight;
+        sect.classList.remove('is-swapping');
+        if (h0 === h1) return;
+        sect.style.height = h0 + 'px';
+        sect.classList.add('is-sizing');
+        void sect.offsetHeight;
+        sect.style.height = h1 + 'px';
+        timer = setTimeout(function () { sect.style.height = ''; sect.classList.remove('is-sizing'); }, 520);
+      }, 260);
     }
 
     btns.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.lang); }); });
@@ -205,6 +218,20 @@
       e.preventDefault();
       set(LANGS[(LANGS.indexOf(cur) + d + LANGS.length) % LANGS.length], true);
     });
+
+    // l'en-tête prend la hauteur de sa langue la plus longue : le sélecteur ne bouge jamais
+    var head = sect.querySelector('.section-head'), lastW = 0;
+    function fitHead() {
+      if (!head || innerWidth === lastW) return;
+      lastW = innerWidth;
+      head.style.minHeight = '';
+      var max = 0;
+      LANGS.forEach(function (l) { apply(l); max = Math.max(max, head.offsetHeight); });
+      apply(cur);
+      head.style.minHeight = max + 'px';
+    }
+    fitHead();
+    addEventListener('resize', fitHead);
 
     var saved = 'fr';
     try { saved = localStorage.getItem('g1650-carte-lang') || 'fr'; } catch (e) { /* idem */ }

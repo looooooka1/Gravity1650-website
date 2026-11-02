@@ -122,23 +122,53 @@
   function initPasses() {
     var els = $all('[data-pass]');
     if (!els.length || reduce) return null;
-    var st = els.map(function (el, i) { return { el: el, a: 0, w: 0, f: [1, -0.8, 0.65][i % 3] }; });
+    var st = els.map(function (el, i) { return { el: el, a: 0, w: 0, f: [1, -0.8, 0.65][i % 3], x: 0, y: 0, vx: 0, vy: 0, held: null }; });
     var raf = 0, live = false;
     function step() {
       raf = 0;
       var moving = vel !== 0;
       st.forEach(function (o) {
-        o.w += clamp(vel, -60, 60) * 0.012 * o.f - o.a * 0.05; // ressort : la vitesse pousse, le cordon rappelle
+        if (!o.held) { // élastique : rappel vers le crochet, avec un léger dépassement
+          o.vx = (o.vx - o.x * 0.08) * 0.82; o.vy = (o.vy - o.y * 0.08) * 0.82;
+          o.x += o.vx; o.y += o.vy;
+        }
+        o.w += clamp(vel, -60, 60) * 0.012 * o.f - o.a * 0.05 + clamp(o.vx, -40, 40) * 0.02; // ressort : la vitesse pousse, le cordon rappelle
         o.w *= 0.9;
-        o.a += o.w;
-        if (Math.abs(o.a) > 0.02 || Math.abs(o.w) > 0.02) moving = true;
+        o.a = clamp(o.a + o.w, -20, 20);
+        if (o.held || Math.abs(o.a) > 0.02 || Math.abs(o.w) > 0.02 || Math.abs(o.x) + Math.abs(o.y) > 0.3 || Math.abs(o.vx) + Math.abs(o.vy) > 0.3) moving = true;
         o.el.style.setProperty('--s', o.a.toFixed(2) + 'deg');
+        o.el.style.setProperty('--x', o.x.toFixed(1) + 'px');
+        o.el.style.setProperty('--y', o.y.toFixed(1) + 'px');
       });
-      if (moving && live) raf = requestAnimationFrame(step);
+      if (moving && (live || st.some(function (o) { return o.held; }))) raf = requestAnimationFrame(step);
     }
+    function kick() { if (!raf) raf = requestAnimationFrame(step); }
+    function rubber(d) { return d / (1 + Math.abs(d) / 900); } // plus on tire, plus ça résiste
+    st.forEach(function (o) {
+      o.el.addEventListener('pointerdown', function (e) {
+        if (e.button) return;
+        o.held = { id: e.pointerId, sx: e.clientX - o.x * 1.6, sy: e.clientY - o.y * 1.6 };
+        try { o.el.setPointerCapture(e.pointerId); } catch (err) { /* pointeur déjà relâché */ }
+        o.el.classList.add('is-held');
+        kick();
+      });
+      o.el.addEventListener('pointermove', function (e) {
+        if (!o.held || o.held.id !== e.pointerId) return;
+        var nx = rubber(e.clientX - o.held.sx), ny = rubber(e.clientY - o.held.sy);
+        o.vx = nx - o.x; o.vy = ny - o.y; o.x = nx; o.y = ny;
+      });
+      function drop(e) {
+        if (!o.held || o.held.id !== e.pointerId) return;
+        o.held = null;
+        o.el.classList.remove('is-held');
+        kick();
+      }
+      o.el.addEventListener('pointerup', drop);
+      o.el.addEventListener('pointercancel', drop);
+    });
     if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { live = e[0].isIntersecting; }).observe(els[0].parentNode);
     else live = true;
-    return function () { if (live && !raf) raf = requestAnimationFrame(step); };
+    return function () { if (live) kick(); };
   }
 
   /* ------------------------ le soir : guirlande dessinée, ampoules posées */

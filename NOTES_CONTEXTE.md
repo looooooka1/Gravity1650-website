@@ -17,3 +17,6 @@
 - Chaque chapitre a son dispositif : matin = télécabine sur câble + titre qui sort de la brume ; midi = soleil qui monte, titre en mix-blend difference ; après-ski = tampon 16:00 + trois « forfaits » pendus qui se balancent selon la vitesse de défilement ; soir = guirlande d'ampoules + néon 19:00.
 - Odomètres et lignes de crête supprimés. Carte = celle de l'accueil (onglets), avec choix FR/EN/ES/DE/中文 : `assets/js/carte-langues.js` (dictionnaire clé = texte FR exact ; si on modifie la carte FR, mettre à jour la clé).
 - Rail horaire : 22:00 atteint avant les avis, puis disparition animée (classe `is-done`).
+
+## 2026-11-02 · Page test immersive, v3
+Chiffres en grand (50, 7h30, 70, 25) + sous-titres. Télécabine redessinée sans heure. Changement de langue sans saut (en-tête à hauteur fixe, hauteur animée). Forfaits attrapables, retour élastique. Néon 19:00 qui grésille puis éclaire le titre.
