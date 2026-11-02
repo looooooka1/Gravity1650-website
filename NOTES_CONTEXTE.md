@@ -29,3 +29,8 @@ Cabine 3/4 en vraie perspective (point de fuite à droite), sans n°55. Forfaits
 - v6 (2026-11-02) : matin = crête de montagnes SVG (.ridge, fill var(--bg)) devant soleil net + couronne box-shadow, ciel orange/rose sur toute la section, grain anti-banding.
 - v7 (2026-11-02) : changements d'ambiance 3.2s ease-in-out (--tod-dur/--tod-ease), lueur après-ski .l-apres descend avec le scroll (--sy) et sort par le bas avant le soir.
 - v8 (2026-11-02) : soleil après-ski rond, noyau hors écran à droite, dégradé à paliers ; halo 19:00 sans grosses ombres (fin des pixels) ; sautes de courant aléatoires (2-5 s) via --lit qui coupe néon, halo et lueur du titre ensemble.
+
+## 2026-11-02 · Audit final (sécurité, perf, SEO, légal)
+- OK : en-têtes sécurité, HTTPS/HSTS, aucun secret, aucun XSS, CSS/JS versionnés (?v=hash), 0 erreur console, liens valides, a11y contrastes AA. Lighthouse / : mobile 82, desktop 100.
+- Code à faire : .rv visible sans JS ; tableau légal déborde à 375px ; preload hero desktop chargé sur mobile ; cookies/confidentialité mentionnent GA inexistant + bouton consentement mort + Apple Plans ; llms.txt contredit horaires/réservation/carte ; doublon téléphone mentions légales ; aria nav-toggle ; Leaflet en lazy ; CSP style-src-attr.
+- Propriétaire : mentions légales (forme, capital, SIREN, TVA, directeur publication) ; dépôt GitHub en privé (NOTES contient email client) ; Vercel Pro (usage commercial) ; DNS SPF -all + MX nul ; valider horaires/réservation/paiement ; fiche Google + Search Console.
