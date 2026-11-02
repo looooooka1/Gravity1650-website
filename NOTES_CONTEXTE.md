@@ -26,3 +26,4 @@ Cabine rouge Chamrousse (logo sur les 2 faces, n°55). Carte toujours en frança
 
 ## 2026-11-02 · Page test immersive, v5
 Cabine 3/4 en vraie perspective (point de fuite à droite), sans n°55. Forfaits : épingle fixe + élastique (SVG, s affine en s étirant). Halo néon sans bord (overflow-x:clip). Thème sombre par défaut (theme.js). Hero 175vh (160vh mobile), sans backdrop-filter. Matin : lever de soleil lié au défilement (--dawn).
+- v6 (2026-11-02) : matin = crête de montagnes SVG (.ridge, fill var(--bg)) devant soleil net + couronne box-shadow, ciel orange/rose sur toute la section, grain anti-banding.
