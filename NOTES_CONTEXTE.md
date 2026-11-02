@@ -20,3 +20,6 @@
 
 ## 2026-11-02 · Page test immersive, v3
 Chiffres en grand (50, 7h30, 70, 25) + sous-titres. Télécabine redessinée sans heure. Changement de langue sans saut (en-tête à hauteur fixe, hauteur animée). Forfaits attrapables, retour élastique. Néon 19:00 qui grésille puis éclaire le titre.
+
+## 2026-11-02 · Page test immersive, v4
+Cabine rouge Chamrousse (logo sur les 2 faces, n°55). Carte toujours en français à l arrivée (plus de mémoire de langue). Néon 19:00 plus lumineux. Saisons : rideau qui se retire + contenu en cascade. Thème clair : soir bleu crépuscule (#B9BFD3).

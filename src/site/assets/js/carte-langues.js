@@ -190,7 +190,6 @@
       });
       if (lang === cur) return;
       cur = lang;
-      try { localStorage.setItem('g1650-carte-lang', lang); } catch (e) { /* stockage bloqué : la langue ne sera pas retenue */ }
       if (reduce) { apply(lang); return; }
       // la carte se voile, change de langue, puis se redévoile
       clearTimeout(timer);
@@ -233,9 +232,6 @@
     fitHead();
     addEventListener('resize', fitHead);
 
-    var saved = 'fr';
-    try { saved = localStorage.getItem('g1650-carte-lang') || 'fr'; } catch (e) { /* idem */ }
-    set('fr');
-    set(saved);
+    set('fr'); // toujours en français à l'arrivée, le visiteur change s'il veut
   });
 })();
