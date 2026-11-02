@@ -223,6 +223,27 @@
     }
   }
 
+  /* ------------- le néon saute : --lit coupe tube, halo et titre ensemble */
+  function flicker(el) {
+    if (reduce) return;
+    var shots = [
+      [[0.15, 70], [1, 90], [0.05, 140]],
+      [[0.6, 50], [0.1, 60], [0.8, 40], [0, 220], [0.5, 60]],
+      [[0, 380], [0.7, 50], [0.1, 90]],
+      [[0.4, 40], [1, 60], [0.3, 40]]
+    ];
+    function run(seq, k) {
+      if (k === seq.length) { el.style.setProperty('--lit', 1); return setTimeout(next, 1800 + Math.random() * 3200); }
+      el.style.setProperty('--lit', seq[k][0]);
+      setTimeout(function () { run(seq, k + 1); }, seq[k][1]);
+    }
+    function next() {
+      if (document.hidden) return setTimeout(next, 2000);
+      run(shots[Math.floor(Math.random() * shots.length)], 0);
+    }
+    setTimeout(function () { el.classList.add('is-live'); next(); }, 3400); // après l'allumage et le fondu du titre
+  }
+
   /* --------------------------- boucle de défilement : la journée avance */
   function initDay(kick) {
     var chapters = $all('.chapter');
@@ -401,7 +422,7 @@
     initGarland();
     initDay(initPasses());
     onView($all('[data-stamp]'), function (el) { el.classList.add('is-in'); }, { threshold: 0.6 });
-    onView($all('[data-lights]'), function (el) { el.classList.add('is-on'); }, { threshold: 0.25 });
+    onView($all('[data-lights]'), function (el) { el.classList.add('is-on'); flicker(el); }, { threshold: 0.25 });
     initDial();
     initPointer();
   });

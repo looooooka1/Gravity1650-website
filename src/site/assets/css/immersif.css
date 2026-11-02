@@ -25,7 +25,11 @@
 .l-matin{background:radial-gradient(60% 50% at 10% 0%,rgba(150,185,235,.16),transparent 70%)}
 .l-midi{background:radial-gradient(55% 45% at 50% -8%,rgba(255,226,170,.13),transparent 70%)}
 /* après-ski : le soleil part du haut à droite et descend avec le défilement (--sy posé par immersif.js) */
-.l-apres{--sy:0;inset:-100vh 0 auto!important;height:200vh;background:radial-gradient(60% 27.5% at 96% 54%,rgba(255,170,90,.26),rgba(238,120,66,.12) 40%,transparent 72%);
+.l-apres{--sy:0;inset:-100vh 0 auto!important;height:200vh;
+  /* disque rond, noyau hors écran à droite ; paliers « ease-out » pour un dégradé sans anneaux */
+  background:
+    radial-gradient(circle 24vmax at calc(100% + 12vw) 54%,rgba(255,220,160,.2),rgba(255,206,140,.14) 25%,rgba(255,190,120,.075) 50%,rgba(255,180,110,.025) 75%,transparent),
+    radial-gradient(circle 85vmax at calc(100% + 12vw) 54%,rgba(255,176,96,.3),rgba(255,170,92,.262) 10%,rgba(252,160,86,.218) 20%,rgba(248,150,80,.168) 30%,rgba(244,140,76,.12) 40%,rgba(240,130,72,.08) 50%,rgba(238,124,68,.048) 60%,rgba(236,120,66,.024) 70%,rgba(236,120,66,.009) 82%,transparent);
   transform:translate3d(0,calc(var(--sy) * 160vh),0);will-change:transform}
 .l-soir{background:radial-gradient(40% 35% at 86% 6%,rgba(170,182,255,.1),transparent 70%)}
 :root[data-tod="matin"] .l-matin,:root[data-tod="midi"] .l-midi,
@@ -183,23 +187,25 @@
   color:transparent;-webkit-text-stroke:1px var(--line-strong)}
 /* tube allumé par-dessus le tube éteint ; ::before = halo qui éclaire le titre */
 .neon::after{content:attr(data-text);position:absolute;inset:0;-webkit-text-stroke:0;color:#FFF4E2;opacity:0;
-  text-shadow:0 0 2px #fff,0 0 7px #FFD49A,0 0 18px #FFA24A,0 0 38px rgba(255,140,50,.95),0 0 80px rgba(255,120,40,.7),0 0 150px rgba(255,110,40,.45)}
+  text-shadow:0 0 2px #fff,0 0 7px #FFD49A,0 0 18px #FFA24A,0 0 34px rgba(255,140,50,.8)}
 .neon::before{content:"";position:absolute;z-index:-1;left:-375px;top:-250px;width:900px;height:620px;opacity:0;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(255,170,90,.36),rgba(255,150,70,.12) 55%,transparent)}
-.is-on .neon::after,.is-on .neon::before{animation:neon 2.6s .4s both,hum 7s 3.2s infinite}
+  background:radial-gradient(closest-side,rgba(255,170,90,.34),rgba(255,166,86,.27) 15%,rgba(255,160,80,.19) 30%,rgba(255,154,76,.12) 45%,rgba(255,150,72,.065) 60%,rgba(255,150,72,.028) 75%,rgba(255,150,72,.008) 88%,transparent)}
+/* --lit : posé par immersif.js pendant les sautes de courant (néon + halo + titre ensemble) */
+.is-on .neon::after,.is-on .neon::before{opacity:var(--lit,1);animation:neon 2.6s .4s backwards}
 @keyframes neon{
   0%{opacity:0;animation-timing-function:steps(1)}3%{opacity:.85;animation-timing-function:steps(1)}5%{opacity:0;animation-timing-function:steps(1)}
   9%{opacity:.5;animation-timing-function:steps(1)}10%{opacity:0;animation-timing-function:steps(1)}17%{opacity:1;animation-timing-function:steps(1)}
   19%{opacity:.12;animation-timing-function:steps(1)}24%{opacity:0;animation-timing-function:steps(1)}34%{opacity:.8;animation-timing-function:steps(1)}
   36%{opacity:.08;animation-timing-function:steps(1)}41%{opacity:1;animation-timing-function:steps(1)}44%{opacity:.45;animation-timing-function:steps(1)}
   47%{opacity:.9}60%,100%{opacity:1}}
-@keyframes hum{0%,100%{opacity:1}48%{opacity:1}49%{opacity:.7}50%{opacity:.95}51%{opacity:.8}52%{opacity:1}}
 .glow-title{font-size:clamp(2.4rem,6.4vw,5.6rem);line-height:.95;letter-spacing:-.04em;color:var(--muted);
   transition:color 1.4s var(--ease) 1.6s,text-shadow 1.4s var(--ease) 1.6s}
-.is-on .glow-title{color:var(--ink);text-shadow:0 -4px 30px rgba(255,170,90,.38),0 0 80px rgba(255,150,70,.18)}
-:root[data-theme="light"] .neon::after{color:#FFF1DC;text-shadow:0 0 2px #fff,0 0 8px #FFB45E,0 0 20px #F08A2E,0 0 44px rgba(230,110,30,.85),0 0 90px rgba(220,100,30,.5)}
+.is-on .glow-title{color:color-mix(in oklab,var(--ink) calc(50% + var(--lit,1) * 50%),var(--muted));
+  text-shadow:0 -4px 30px rgba(255,170,90,calc(.38 * var(--lit,1))),0 0 70px rgba(255,150,70,calc(.18 * var(--lit,1)))}
+.is-live .glow-title{transition:color 50ms,text-shadow 50ms}
+:root[data-theme="light"] .neon::after{color:#FFF1DC;text-shadow:0 0 2px #fff,0 0 8px #FFB45E,0 0 20px #F08A2E,0 0 40px rgba(230,110,30,.75)}
 :root[data-theme="light"] .neon{-webkit-text-stroke-color:rgba(40,45,70,.35)}
-:root[data-theme="light"] .is-on .glow-title{text-shadow:0 -2px 24px rgba(230,130,40,.25)}
+:root[data-theme="light"] .is-on .glow-title{text-shadow:0 -2px 24px rgba(230,130,40,calc(.25 * var(--lit,1)))}
 
 /* ---------- compteurs du bandeau ---------- */
 .page-day .fact b{font-variant-numeric:tabular-nums}
