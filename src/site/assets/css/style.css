@@ -212,6 +212,10 @@ button{font:inherit;color:inherit}
 .plane .plane-img{width:100%;height:var(--plane-h);object-fit:cover;object-position:center top}
 /* le plan avant est prolonge sous la photo : meme largeur, meme echelle, jamais de vide */
 .plane-front .plane-img{height:calc(var(--plane-h) * 2)}
+/* bas de la photo du plan avant : l'image est en object-fit:cover, donc elle s'etire en hauteur si l'ecran est plus large que haut */
+.hero{--photo-b:max(var(--plane-h),100vw)}
+/* le bandeau suit le bord de la photo, le reste est un aplat de la couleur de page : aucune bande floue */
+.hero-foot{position:absolute;left:0;right:0;top:var(--photo-b);height:var(--plane-h);background:var(--bg)}
 .plane-back{z-index:1;transform:translate3d(0,calc(var(--back-a) * (1 - var(--p)) + var(--back-b) * var(--p)),0)}
 .plane-front{z-index:3;transform:translate3d(0,calc(var(--front-a) * (1 - var(--p)) + var(--front-b) * var(--p)),0)}
 
@@ -227,8 +231,7 @@ button{font:inherit;color:inherit}
 .hero-grade{
   position:absolute;inset:0;z-index:4;pointer-events:none;
   background:
-    linear-gradient(to bottom,rgba(14,12,16,.6) 0%,rgba(14,12,16,.1) 17%,rgba(14,12,16,0) 33%),
-    linear-gradient(to top,var(--bg) 0%,var(--bg) 5%,rgba(0,0,0,0) 34%)
+    linear-gradient(to bottom,rgba(14,12,16,.6) 0%,rgba(14,12,16,.1) 17%,rgba(14,12,16,0) 33%)
 }
 
 .hero-ui{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(26px,5vh,54px);pointer-events:none}
@@ -276,6 +279,7 @@ a.status:hover{transform:translateY(-2px);border-color:rgba(247,240,231,.5);back
 
 @media (max-width:760px){
   .hero{--plane-h:130vh;--back-a:-14vh;--back-b:-40vh;--front-a:-18vh;--front-b:-86vh}
+  .hero{--photo-b:max(var(--plane-h),177.78vw)} /* photo portrait 1080x1920 */
   .hero-track{height:250vh}
   /* le titre respire : on le remonte au-dessus du centre pour degager la pilule/adresse en haut
      et le bloc statut/CTA en bas, qui se chevauchaient sur petit ecran */
